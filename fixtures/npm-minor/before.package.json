@@ -1,0 +1,7 @@
+{
+  "name": "fixture-npm-minor",
+  "private": true,
+  "dependencies": {
+    "ms": "2.1.2"
+  }
+}

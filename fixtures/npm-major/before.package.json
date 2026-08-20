@@ -1,0 +1,7 @@
+{
+  "name": "fixture-npm-major",
+  "private": true,
+  "dependencies": {
+    "chalk": "4.1.2"
+  }
+}
