@@ -41,4 +41,4 @@
 | 2 | ✅ | `OFFLINE=1 ./run.sh no-change\|npm-major\|npm-minor` 均通过 |
 | 3 | ✅ | `automations/origin-pr-review.md` 含 HARD RULES 禁改代码 |
 | 4 | ✅ | `node --test`：7 passed, 0 failed |
-| 5 | ⏳ | 需你本机 `origin auth login`；步骤见 `docs/ORIGIN_SETUP.md` |
+| 5 | ✅ 仓已推送 | `zhu-xiaowei/dep-second-opinion` → Origin；Automation 待在编辑器里点保存 |
