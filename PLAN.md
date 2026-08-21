@@ -60,13 +60,13 @@
 | 14 Phase3.4 | ✅ 修试验暴露缺陷 | `auto_merge` 超限→REVIEW；HIGH_RISK 发评论且 Action 绿；tag `v0.1.1` |
 | 15 Phase3.5 | 🔄 留存/影响率 | T0 + Dependabot 已就位；窗至 **2026-09-04**；见 `trials/retention.md` |
 | 16 Phase3.6 | ✅ 安装文档 | [`docs/install.md`](./docs/install.md) Path A/B；README 链到安装页 |
+| 17 Phase3.7 | ✅ 公开 Action | 仓 **public**；Path A 优先；试验仓 main 已 `uses: …@v0.1.1`；PR#2 Path A 复验通过 |
 
 ## Phase 3 原则
 
 - 仍只评论、不改依赖
 - 杀伤标准：见试验协议「停做线」
-- 步骤 16 已验收。步骤 15 的 T1/真实影响率需等到 Dependabot PR 或 9/4。  
-  说「继续」→ 考虑 **公开 Action 仓**（解锁 Path A）或等窗结束填留存
+- 步骤 17 已验收。步骤 15 的 T1/影响率仍待 **2026-09-04** / 真实 Dependabot PR
 
 ## 试验协议（Phase 3.1）
 

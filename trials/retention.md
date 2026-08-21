@@ -5,7 +5,7 @@
 | 项 | 值 |
 | :--- | :--- |
 | 试验仓 | [lory69060/dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) |
-| Action | 仍启用；pin `v0.1.1`（`DEP_REVIEW_READ` checkout） |
+| Action | 仍启用；pin `v0.1.1`（**public Path A** `uses: lory69060/dep-second-opinion@v0.1.1`） |
 | 信号矩阵 | 10/10 已记；误报/漏报 0%（见 `log.md`） |
 | Dependabot | 本步启用（见仓内 `.github/dependabot.yml`） |
 | 观察窗结束 | **2026-09-04**（T0 + 14 天） |
