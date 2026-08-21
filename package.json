@@ -17,7 +17,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "chalk": "4.1.2"
+    "chalk": "5.3.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
