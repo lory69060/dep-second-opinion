@@ -31,26 +31,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
-      - name: Enable corepack (pnpm)
-        run: corepack enable
+          node-version: "22"
 
       - name: Install
-        run: |
-          if [ -f pnpm-lock.yaml ]; then
-            pnpm install
-          else
-            npm install
-          fi
+        run: npm install
 
       - name: Build analyzer
-        run: |
-          if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then
-            pnpm run build
-          else
-            npm run build
-          fi
+        run: npm run build
 
       - name: Review dependency changes
         env:
