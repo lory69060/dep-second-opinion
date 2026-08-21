@@ -35,26 +35,33 @@ export function formatMarkdown(result: ReviewResult): string {
     `- **Confidence**: ${(result.confidence * 100).toFixed(0)}%`,
     `- **Summary**: ${result.summary}`,
     "",
-    "### Changes",
+    "### Why this verdict",
     "",
   ];
 
+  for (const reason of result.reasons) {
+    lines.push(`- ${reason}`);
+  }
+
+  lines.push("");
+  lines.push("### Changes");
+  lines.push("");
+
   for (const item of result.changes) {
-    const { change, osv, meta, notes, localScore } = item;
+    const { change, osv, meta, notes, localScore, evidence } = item;
     lines.push(
       `#### \`${change.name}\` (${change.fromVersion ?? "∅"} → ${change.toVersion ?? "∅"})`,
     );
-    lines.push(`- Bump: \`${change.bump}\` · local score: ${localScore}`);
+    lines.push(`- Section: \`${change.section}\` · bump: \`${change.bump}\` · score: ${localScore}`);
+    lines.push("- Evidence:");
+    for (const e of evidence) {
+      lines.push(`  - ${e}`);
+    }
     if (meta?.deprecated) {
       lines.push(`- ⚠️ Deprecated: ${meta.deprecated}`);
     }
-    if (meta?.latestVersion) {
-      lines.push(`- Registry latest: \`${meta.latestVersion}\``);
-    }
-    if (osv.length === 0) {
-      lines.push("- OSV: no known vulns for **target** version");
-    } else {
-      lines.push("- OSV hits on target version:");
+    if (osv.length > 0) {
+      lines.push("- OSV details:");
       for (const v of osv.slice(0, 5)) {
         lines.push(`  - [${v.id}](https://osv.dev/vulnerability/${v.id}): ${v.summary}`);
       }

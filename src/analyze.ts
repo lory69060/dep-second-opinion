@@ -53,6 +53,9 @@ async function enrichChange(
   if (change.bump === "major") {
     notes.push("Major version bump — review changelog for breaking changes.");
   }
+  if (change.section === "devDependencies" && change.bump === "major") {
+    notes.push("Dev-only major bump: lower runtime risk, still check tooling breakage.");
+  }
 
   return {
     change,
@@ -60,6 +63,7 @@ async function enrichChange(
     meta,
     notes,
     localScore: 0,
+    evidence: [],
   };
 }
 

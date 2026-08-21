@@ -36,17 +36,24 @@ if [[ -z "${BASE_SHA:-}" || -z "${HEAD_SHA:-}" ]]; then
   exit 1
 fi
 
-CHANGED="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- '*package.json' || true)"
-if [[ -z "$CHANGED" ]]; then
+CHANGED="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- || true)"
+MANIFEST_CHANGED="$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- '*package.json' || true)"
+if [[ -z "$MANIFEST_CHANGED" ]]; then
   echo "No package.json changes; skipping comment."
   exit 0
 fi
 
-if echo "$CHANGED" | grep -qx 'package.json'; then
+if echo "$MANIFEST_CHANGED" | grep -qx 'package.json'; then
   TARGET="package.json"
 else
-  TARGET="$(echo "$CHANGED" | head -n1)"
+  TARGET="$(echo "$MANIFEST_CHANGED" | head -n1)"
 fi
+
+# PR context for gating (Dependabot/Renovate / deps-only)
+PR_AUTHOR="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.user.login' 2>/dev/null || true)"
+PR_TITLE="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.title' 2>/dev/null || true)"
+PR_LABELS="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '[.labels[].name] | join(",")' 2>/dev/null || true)"
+CHANGED_CSV="$(echo "$CHANGED" | paste -sd, -)"
 
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
@@ -68,7 +75,13 @@ if [[ ! -f "$ROOT/dist/cli.js" ]]; then
 fi
 
 JSON_OUT="$TMP_DIR/result.json"
-node "$ROOT/dist/cli.js" analyze --from "$BEFORE" --to "$AFTER" --json >"$JSON_OUT"
+GATE_ARGS=()
+if [[ -n "${PR_AUTHOR:-}" ]]; then GATE_ARGS+=(--actor "$PR_AUTHOR"); fi
+if [[ -n "${PR_TITLE:-}" ]]; then GATE_ARGS+=(--title "$PR_TITLE"); fi
+if [[ -n "${PR_LABELS:-}" ]]; then GATE_ARGS+=(--labels "$PR_LABELS"); fi
+if [[ -n "${CHANGED_CSV:-}" ]]; then GATE_ARGS+=(--changed "$CHANGED_CSV"); fi
+
+node "$ROOT/dist/cli.js" analyze --from "$BEFORE" --to "$AFTER" --json "${GATE_ARGS[@]}" >"$JSON_OUT"
 
 VERDICT="$(node -e "const fs=require('fs'); const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); console.log(r.verdict)" "$JSON_OUT")"
 if [[ "$VERDICT" == "NO_COMMENT" ]]; then

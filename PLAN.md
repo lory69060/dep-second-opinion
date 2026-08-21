@@ -51,4 +51,5 @@
 | 5 | ✅ 仓已推送 | `zhu-xiaowei/dep-second-opinion` → Origin |
 | 6 E2E | ✅ GitHub Automation demo | [GH PR #1](https://github.com/lory69060/dep-second-opinion/pull/1) Cursor Automation 评论 `REVIEW_RECOMMENDED` |
 | 7 换壳 | ✅ GitHub Action | `.github/workflows/dep-second-opinion.yml` + `scripts/github-pr-review.sh` + `action.yml` |
+| 8 Phase1 | ✅ 做深 | 评论含 Why/Evidence；prod/dev 分策；Dependabot/Renovate/门禁（`pr-gate`） |
 
