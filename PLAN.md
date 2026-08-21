@@ -56,14 +56,14 @@
 | 10 Phase3.0 | ✅ Action 可 pin | 打 `v0.1.0`；README 推荐 `uses: …@v0.1.0`（非 `@main`） |
 | 11 Phase3.1 | ✅ 试验协议 | 见下方「试验协议」；记录表 `trials/log.md` |
 | 12 Phase3.2 | ✅ 真实仓试验 | 外仓 [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) 已挂 `@v0.1.0`；[PR #1](https://github.com/lory69060/dep-second-opinion-trial/pull/1) → `REVIEW_RECOMMENDED`；log #1 |
-| 13 Phase3.3 | 🔄 凑样本 | 已 6/10；修缺陷后用 v0.1.1 复验 #3/#6 再补 |
-| 14 Phase3.4 | ✅ 修试验暴露缺陷 | `auto_merge_max_bump` 超限→REVIEW；HIGH_RISK 仍发评论且 Action 绿；`v0.1.1` |
+| 13 Phase3.3 | 🔄 凑样本 | 6/10；#3/#6 已用 v0.1.1 复验为 ok；见 `trials/log.md` |
+| 14 Phase3.4 | ✅ 修试验暴露缺陷 | `auto_merge` 超限→REVIEW；HIGH_RISK 发评论且 Action 绿；tag `v0.1.1` |
 
 ## Phase 3 原则
 
 - 仍只评论、不改依赖
 - 杀伤标准：见试验协议「停做线」
-- 步骤 14 已验收；说「继续」→ 复验 #3/#6 并补样本到 10
+- 步骤 14 已验收并复验。说「继续」→ 补样本到 10 条
 
 ## 试验协议（Phase 3.1）
 
