@@ -11,7 +11,9 @@ Pin **`v0.1.1`** (or newer `v0.1.x`). Never uses `@main` in customer repos.
 | `contents: read` | Diff base→head `package.json` |
 | Optional: `.dep-second-opinion.yml` | Repo policy (auto_merge / major / ignore) |
 
-## Path A — public Action (preferred when this repo is public)
+## Path A — public composite Action (preferred)
+
+This Action repo is **public**. Customer workflows can `uses:` it directly:
 
 ```yaml
 # .github/workflows/dep-second-opinion.yml
@@ -39,10 +41,10 @@ jobs:
       - uses: lory69060/dep-second-opinion@v0.1.1
 ```
 
-## Path B — private Action (personal account today)
+## Path B — private / air-gapped (optional)
 
-GitHub does **not** allow `uses: owner/private-action@tag` across personal private repos.  
-Checkout the analyzer with a read token instead (same pattern as the [trial host](https://github.com/lory69060/dep-second-opinion-trial)):
+Only needed if you fork a **private** copy of the Action, or cannot pull public Actions.  
+Checkout the analyzer with a read token (same pattern the trial host used before public):
 
 1. Create a classic PAT or fine-grained token with **Contents: Read** on `lory69060/dep-second-opinion`.
 2. Add repo secret `DEP_REVIEW_READ`.

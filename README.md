@@ -48,7 +48,7 @@ See **[docs/install.md](./docs/install.md)** (Path A public composite · Path B 
 ```
 
 > Pin a release tag (e.g. `v0.1.1`). Avoid `@main`.  
-> While this Action repo stays **private**, use Path B in the install guide.
+> Action repo is **public** — Path A is the default. Path B remains for private forks.
 
 ## Local CLI
 
