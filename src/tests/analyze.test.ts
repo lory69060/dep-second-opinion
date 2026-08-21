@@ -50,7 +50,7 @@ test("SAFE_TO_MERGE for offline patch bump without vulns includes Why section", 
   assert.ok(result.reasons.length > 0);
 });
 
-test("OSV hit on patch bump recommends review", async () => {
+test("OSV hit on patch bump is HIGH_RISK under default policy", async () => {
   const result = await analyzeChanges(
     [
       {
@@ -69,9 +69,9 @@ test("OSV hit on patch bump recommends review", async () => {
       },
     },
   );
-  assert.equal(result.verdict, "REVIEW_RECOMMENDED");
+  assert.equal(result.verdict, "HIGH_RISK");
   assert.match(result.markdown, /GHSA-test/);
-  assert.match(result.markdown, /Evidence:/);
+  assert.match(result.markdown, /on_osv=high_risk/);
 });
 
 test("deprecated package is HIGH_RISK", async () => {

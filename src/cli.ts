@@ -2,8 +2,9 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { analyzePackageJsonPair } from "./analyze.js";
-import { shouldReviewPullRequest } from "./pr-gate.js";
 import { formatMarkdown } from "./format-comment.js";
+import { loadPolicy } from "./policy/load.js";
+import { shouldReviewPullRequest } from "./pr-gate.js";
 
 function printHelp(): void {
   console.log(`dep-review — dependency PR second opinion (npm)
@@ -15,6 +16,7 @@ Usage:
 Options:
   --json              Print full ReviewResult JSON (includes markdown)
   --offline           Skip OSV / npm network calls
+  --repo-root <dir>   Load .dep-second-opinion.yml from this directory (default: cwd)
   --actor <login>     PR author (for Dependabot/Renovate gating)
   --title <title>     PR title
   --labels <a,b>      Comma-separated labels
@@ -58,6 +60,9 @@ async function main(): Promise<void> {
     return;
   }
 
+  const repoRoot = path.resolve(getFlag(args, "--repo-root") ?? process.cwd());
+  const { policy, source } = await loadPolicy(repoRoot);
+
   const actor = getFlag(args, "--actor");
   const title = getFlag(args, "--title");
   const labelsRaw = getFlag(args, "--labels");
@@ -67,8 +72,8 @@ async function main(): Promise<void> {
     ? changedRaw.split(",").map((s) => s.trim()).filter(Boolean)
     : undefined;
 
-  // Gate only when caller provides PR context.
-  if (actor || title || labels.length || changedPaths) {
+  const hasPrContext = Boolean(actor || title || labels.length || changedPaths);
+  if (policy.requireDependencyContext && hasPrContext) {
     const gate = shouldReviewPullRequest({ actor, title, labels, changedPaths });
     if (!gate.review) {
       const skipped = {
@@ -80,7 +85,7 @@ async function main(): Promise<void> {
         markdown: "",
         noCommentReason: "skip_non_dependency_pr",
       };
-      skipped.markdown = formatMarkdown(skipped);
+      skipped.markdown = formatMarkdown(skipped, source);
       if (has(args, "--json")) console.log(JSON.stringify(skipped, null, 2));
       else console.log(skipped.markdown);
       return;
@@ -91,6 +96,8 @@ async function main(): Promise<void> {
   const afterText = await readFile(path.resolve(toPath), "utf8");
   const result = await analyzePackageJsonPair(beforeText, afterText, {
     offline: has(args, "--offline"),
+    policy,
+    policySource: source,
   });
 
   if (has(args, "--json")) {

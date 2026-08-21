@@ -81,7 +81,7 @@ if [[ -n "${PR_TITLE:-}" ]]; then GATE_ARGS+=(--title "$PR_TITLE"); fi
 if [[ -n "${PR_LABELS:-}" ]]; then GATE_ARGS+=(--labels "$PR_LABELS"); fi
 if [[ -n "${CHANGED_CSV:-}" ]]; then GATE_ARGS+=(--changed "$CHANGED_CSV"); fi
 
-node "$ROOT/dist/cli.js" analyze --from "$BEFORE" --to "$AFTER" --json "${GATE_ARGS[@]}" >"$JSON_OUT"
+node "$ROOT/dist/cli.js" analyze --from "$BEFORE" --to "$AFTER" --json --repo-root "$REPO_ROOT" "${GATE_ARGS[@]}" >"$JSON_OUT"
 
 VERDICT="$(node -e "const fs=require('fs'); const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); console.log(r.verdict)" "$JSON_OUT")"
 if [[ "$VERDICT" == "NO_COMMENT" ]]; then

@@ -17,7 +17,10 @@ function verdictLabel(v: Verdict): string {
   }
 }
 
-export function formatMarkdown(result: ReviewResult): string {
+export function formatMarkdown(
+  result: ReviewResult,
+  policySource: string | null = null,
+): string {
   if (result.verdict === "NO_COMMENT") {
     return [
       "<!-- dep-second-opinion: NO_COMMENT -->",
@@ -34,6 +37,7 @@ export function formatMarkdown(result: ReviewResult): string {
     `- **Verdict**: \`${result.verdict}\``,
     `- **Confidence**: ${(result.confidence * 100).toFixed(0)}%`,
     `- **Summary**: ${result.summary}`,
+    `- **Policy**: ${policySource ? `\`${policySource}\`` : "built-in defaults"}`,
     "",
     "### Why this verdict",
     "",

@@ -3,6 +3,24 @@
 Opt-in **second opinion** for npm dependency upgrade PRs.  
 **Comment-only** — never edits `package.json` / lockfiles.
 
+## Repository policy
+
+Add `.dep-second-opinion.yml` at the repo root (see example in this repository):
+
+```yaml
+version: 1
+require_dependency_context: true
+production:
+  auto_merge_max_bump: patch
+  major: review
+development:
+  auto_merge_max_bump: minor
+  major: review
+on_osv: high_risk
+on_deprecated: high_risk
+ignore: []
+```
+
 ## Formal shell (what customers see)
 
 **GitHub Actions** posts as `github-actions[bot]`.  

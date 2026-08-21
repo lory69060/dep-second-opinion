@@ -1,0 +1,24 @@
+# dep-second-opinion repository policy
+# Place this file at the repo root. Unknown keys are ignored by the minimal YAML parser.
+
+version: 1
+
+# When true, skip mixed feature PRs unless Dependabot/Renovate / deps title / manifest-only.
+require_dependency_context: true
+
+production:
+  # patch | minor | major | none
+  auto_merge_max_bump: patch
+  # review | high_risk
+  major: review
+
+development:
+  auto_merge_max_bump: minor
+  major: review
+
+# Escalate when signals fire
+on_osv: high_risk
+on_deprecated: high_risk
+
+ignore:
+  # - some-internal-package
