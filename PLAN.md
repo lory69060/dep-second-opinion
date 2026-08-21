@@ -41,4 +41,6 @@
 | 2 | ✅ | `OFFLINE=1 ./run.sh no-change\|npm-major\|npm-minor` 均通过 |
 | 3 | ✅ | `automations/origin-pr-review.md` 含 HARD RULES 禁改代码 |
 | 4 | ✅ | `node --test`：7 passed, 0 failed |
-| 5 | ✅ 仓已推送 | `zhu-xiaowei/dep-second-opinion` → Origin；Automation 待在编辑器里点保存 |
+| 5 | ✅ 仓已推送 | `zhu-xiaowei/dep-second-opinion` → Origin |
+| 6 E2E | ⏳ | PR [#1](https://cursor.com/codebase/zhu-xiaowei/dep-second-opinion/pull/1) 已开；本地 CLI 对 chalk 4→5 输出 `REVIEW_RECOMMENDED`；Automation 评论尚未出现（需 Save/Activate） |
+
