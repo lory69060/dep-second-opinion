@@ -1,31 +1,87 @@
 import type { ChangeAnalysis, ReviewResult, Verdict } from "./types.js";
+import {
+  bumpWithinAutoMerge,
+  DEFAULT_POLICY,
+  type EscalateLevel,
+  type Policy,
+} from "./policy/types.js";
 
 function clamp(n: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, n));
 }
 
-export function scoreChange(analysis: ChangeAnalysis): number {
+function isProdSection(section: string): boolean {
+  return section === "dependencies" || section === "peerDependencies";
+}
+
+export function evidenceForChange(analysis: ChangeAnalysis): string[] {
+  const { change, osv, meta } = analysis;
+  const evidence: string[] = [];
+  const scope = isProdSection(change.section) ? "production" : "dev/tooling";
+  evidence.push(`scope=${scope} (\`${change.section}\`)`);
+  evidence.push(`bump=\`${change.bump}\` (${change.fromVersion ?? "∅"} → ${change.toVersion ?? "∅"})`);
+
+  if (meta?.deprecated) {
+    evidence.push(`deprecated: ${meta.deprecated}`);
+  }
+  if (osv.length > 0) {
+    evidence.push(
+      `OSV on target: ${osv
+        .slice(0, 3)
+        .map((v) => v.id)
+        .join(", ")}`,
+    );
+  } else {
+    evidence.push("OSV: no known vulns for target version");
+  }
+  if (meta?.latestVersion && change.toVersion && meta.latestVersion !== change.toVersion) {
+    evidence.push(`registry latest is \`${meta.latestVersion}\` (not necessarily a risk)`);
+  }
+  return evidence;
+}
+
+export function scoreChange(analysis: ChangeAnalysis, policy: Policy = DEFAULT_POLICY): number {
   let score = 0;
   const { change, osv, meta } = analysis;
+  const prod = isProdSection(change.section);
+  const scope = prod ? policy.production : policy.development;
 
-  if (change.bump === "major") score += 40;
-  else if (change.bump === "minor") score += 15;
-  else if (change.bump === "prerelease") score += 25;
-  else if (change.bump === "unknown") score += 20;
+  if (change.bump === "major") score += prod ? 45 : 25;
+  else if (change.bump === "minor") score += prod ? 18 : 8;
+  else if (change.bump === "prerelease") score += prod ? 28 : 15;
+  else if (change.bump === "unknown") score += prod ? 22 : 12;
+  else if (change.bump === "patch") score += prod ? 2 : 0;
 
-  if (!change.fromVersion || !change.toVersion) score += 30;
+  if (!change.fromVersion || !change.toVersion) score += prod ? 30 : 18;
 
   score += Math.min(50, osv.length * 25);
 
   if (meta?.deprecated) score += 35;
 
+  // Soften score when within auto-merge band and clean.
+  if (
+    osv.length === 0 &&
+    !meta?.deprecated &&
+    bumpWithinAutoMerge(change.bump, scope.autoMergeMaxBump)
+  ) {
+    score = Math.min(score, 10);
+  }
+
   return clamp(score, 0, 100);
 }
 
-export function aggregateVerdict(changes: ChangeAnalysis[]): {
+function escalate(level: EscalateLevel): Verdict {
+  return level === "high_risk" ? "HIGH_RISK" : "REVIEW_RECOMMENDED";
+}
+
+export function aggregateVerdict(
+  changes: ChangeAnalysis[],
+  policy: Policy = DEFAULT_POLICY,
+): {
   verdict: Verdict;
   confidence: number;
   summary: string;
+  reasons: string[];
   noCommentReason?: string;
 } {
   if (changes.length === 0) {
@@ -33,34 +89,105 @@ export function aggregateVerdict(changes: ChangeAnalysis[]): {
       verdict: "NO_COMMENT",
       confidence: 1,
       summary: "No dependency version changes detected.",
+      reasons: ["no_dependency_changes"],
       noCommentReason: "no_dependency_changes",
     };
   }
 
-  const scored = changes.map((c) => ({
-    ...c,
-    localScore: scoreChange(c),
-  }));
+  const scored = changes.map((c) => {
+    const evidence = evidenceForChange(c);
+    return {
+      ...c,
+      localScore: scoreChange(c, policy),
+      evidence,
+    };
+  });
 
-  const maxScore = Math.max(...scored.map((c) => c.localScore));
   const hasOsv = scored.some((c) => c.osv.length > 0);
-  const hasMajor = scored.some((c) => c.change.bump === "major");
   const hasDeprecated = scored.some((c) => Boolean(c.meta?.deprecated));
+  const hasProdMajor = scored.some(
+    (c) => c.change.bump === "major" && isProdSection(c.change.section),
+  );
+  const hasDevMajor = scored.some(
+    (c) => c.change.bump === "major" && !isProdSection(c.change.section),
+  );
+  const prodChanges = scored.filter((c) => isProdSection(c.change.section));
+  const maxScore = Math.max(...scored.map((c) => c.localScore));
 
-  let verdict: Verdict;
-  if (maxScore >= 60 || (hasOsv && hasMajor) || hasDeprecated) {
-    verdict = "HIGH_RISK";
-  } else if (maxScore >= 25 || hasMajor || hasOsv) {
-    verdict = "REVIEW_RECOMMENDED";
-  } else {
-    verdict = "SAFE_TO_MERGE";
+  const reasons: string[] = [];
+  let verdict: Verdict = "SAFE_TO_MERGE";
+
+  if (hasDeprecated) {
+    verdict = escalate(policy.onDeprecated);
+    reasons.push(
+      `policy on_deprecated=${policy.onDeprecated}: target package marked deprecated on npm`,
+    );
   }
 
-  const confidence = clamp(0.55 + scored.length * 0.05 + (hasOsv ? 0.15 : 0), 0, 0.95);
+  if (hasOsv) {
+    const v = escalate(policy.onOsv);
+    if (rank(v) > rank(verdict)) verdict = v;
+    reasons.push(`policy on_osv=${policy.onOsv}: OSV hit on at least one target version`);
+  }
+
+  for (const c of scored) {
+    const prod = isProdSection(c.change.section);
+    const scope = prod ? policy.production : policy.development;
+    if (c.change.bump === "major") {
+      const v = escalate(scope.major);
+      if (rank(v) > rank(verdict)) verdict = v;
+      reasons.push(
+        `policy ${prod ? "production" : "development"}.major=${scope.major} for \`${c.change.name}\``,
+      );
+    } else if (
+      !c.osv.length &&
+      !c.meta?.deprecated &&
+      bumpWithinAutoMerge(c.change.bump, scope.autoMergeMaxBump)
+    ) {
+      reasons.push(
+        `\`${c.change.name}\` within ${prod ? "production" : "development"}.auto_merge_max_bump=${scope.autoMergeMaxBump}`,
+      );
+    } else if (c.localScore >= 25) {
+      if (rank("REVIEW_RECOMMENDED") > rank(verdict)) verdict = "REVIEW_RECOMMENDED";
+      reasons.push(`\`${c.change.name}\` score ${c.localScore} exceeds soft threshold`);
+    }
+  }
+
+  if (prodChanges.length > 0) {
+    reasons.push(`${prodChanges.length} production-scope change(s)`);
+  }
+
+  // If everything is within auto-merge and clean, keep SAFE.
+  const allAuto =
+    !hasOsv &&
+    !hasDeprecated &&
+    scored.every((c) => {
+      const prod = isProdSection(c.change.section);
+      const scope = prod ? policy.production : policy.development;
+      return bumpWithinAutoMerge(c.change.bump, scope.autoMergeMaxBump);
+    });
+  if (allAuto) {
+    verdict = "SAFE_TO_MERGE";
+    reasons.push("all changes within configured auto_merge_max_bump and clean of OSV/deprecation");
+  }
+
+  if (reasons.length === 0) {
+    reasons.push(maxScore < 25 ? "low score with default policy" : "defaulted by score");
+    if (maxScore >= 60 && rank(verdict) < rank("HIGH_RISK")) verdict = "HIGH_RISK";
+    else if (maxScore >= 25 && rank(verdict) < rank("REVIEW_RECOMMENDED")) {
+      verdict = "REVIEW_RECOMMENDED";
+    }
+  }
+
+  const confidence = clamp(
+    0.55 + scored.length * 0.05 + (hasOsv ? 0.15 : 0) + (hasDeprecated ? 0.1 : 0),
+    0,
+    0.95,
+  );
 
   const summaryParts = [
     `${scored.length} dependency change(s)`,
-    hasMajor ? "includes major bump" : null,
+    hasProdMajor ? "includes production major bump" : hasDevMajor ? "includes dev major bump" : null,
     hasOsv ? "OSV hits present" : null,
     hasDeprecated ? "deprecated package" : null,
   ].filter(Boolean);
@@ -69,19 +196,45 @@ export function aggregateVerdict(changes: ChangeAnalysis[]): {
     verdict,
     confidence,
     summary: summaryParts.join("; ") + ".",
+    reasons,
   };
 }
 
-export function buildReviewResult(changes: ChangeAnalysis[]): ReviewResult {
-  const enriched = changes.map((c) => ({
-    ...c,
-    localScore: scoreChange(c),
-  }));
-  const agg = aggregateVerdict(enriched);
+function rank(v: Verdict): number {
+  switch (v) {
+    case "NO_COMMENT":
+      return 0;
+    case "SAFE_TO_MERGE":
+      return 1;
+    case "REVIEW_RECOMMENDED":
+      return 2;
+    case "HIGH_RISK":
+      return 3;
+    default: {
+      const _exhaustive: never = v;
+      return _exhaustive;
+    }
+  }
+}
+
+export function buildReviewResult(
+  changes: ChangeAnalysis[],
+  policy: Policy = DEFAULT_POLICY,
+): ReviewResult {
+  const filtered = changes.filter((c) => !policy.ignore.includes(c.change.name));
+  const enriched = filtered.map((c) => {
+    const withScore = { ...c, localScore: scoreChange(c, policy) };
+    return {
+      ...withScore,
+      evidence: evidenceForChange(withScore),
+    };
+  });
+  const agg = aggregateVerdict(enriched, policy);
   return {
     verdict: agg.verdict,
     confidence: agg.confidence,
     summary: agg.summary,
+    reasons: agg.reasons,
     changes: enriched,
     markdown: "",
     noCommentReason: agg.noCommentReason,

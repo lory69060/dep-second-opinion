@@ -2,18 +2,26 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { analyzePackageJsonPair } from "./analyze.js";
+import { formatMarkdown } from "./format-comment.js";
+import { loadPolicy } from "./policy/load.js";
+import { shouldReviewPullRequest } from "./pr-gate.js";
 
 function printHelp(): void {
   console.log(`dep-review — dependency PR second opinion (npm)
 
 Usage:
-  dep-review analyze --from <before.package.json> --to <after.package.json> [--json] [--offline]
+  dep-review analyze --from <before.package.json> --to <after.package.json> [options]
   dep-review help
 
 Options:
-  --json      Print full ReviewResult JSON (includes markdown)
-  --offline   Skip OSV / npm network calls
-  --help      Show this help
+  --json              Print full ReviewResult JSON (includes markdown)
+  --offline           Skip OSV / npm network calls
+  --repo-root <dir>   Load .dep-second-opinion.yml from this directory (default: cwd)
+  --actor <login>     PR author (for Dependabot/Renovate gating)
+  --title <title>     PR title
+  --labels <a,b>      Comma-separated labels
+  --changed <paths>   Comma-separated changed file paths (for gate)
+  --help              Show this help
 `);
 }
 
@@ -52,10 +60,44 @@ async function main(): Promise<void> {
     return;
   }
 
+  const repoRoot = path.resolve(getFlag(args, "--repo-root") ?? process.cwd());
+  const { policy, source } = await loadPolicy(repoRoot);
+
+  const actor = getFlag(args, "--actor");
+  const title = getFlag(args, "--title");
+  const labelsRaw = getFlag(args, "--labels");
+  const changedRaw = getFlag(args, "--changed");
+  const labels = labelsRaw ? labelsRaw.split(",").map((s) => s.trim()).filter(Boolean) : [];
+  const changedPaths = changedRaw
+    ? changedRaw.split(",").map((s) => s.trim()).filter(Boolean)
+    : undefined;
+
+  const hasPrContext = Boolean(actor || title || labels.length || changedPaths);
+  if (policy.requireDependencyContext && hasPrContext) {
+    const gate = shouldReviewPullRequest({ actor, title, labels, changedPaths });
+    if (!gate.review) {
+      const skipped = {
+        verdict: "NO_COMMENT" as const,
+        confidence: 1,
+        summary: gate.reason,
+        reasons: [gate.reason],
+        changes: [],
+        markdown: "",
+        noCommentReason: "skip_non_dependency_pr",
+      };
+      skipped.markdown = formatMarkdown(skipped, source);
+      if (has(args, "--json")) console.log(JSON.stringify(skipped, null, 2));
+      else console.log(skipped.markdown);
+      return;
+    }
+  }
+
   const beforeText = await readFile(path.resolve(fromPath), "utf8");
   const afterText = await readFile(path.resolve(toPath), "utf8");
   const result = await analyzePackageJsonPair(beforeText, afterText, {
     offline: has(args, "--offline"),
+    policy,
+    policySource: source,
   });
 
   if (has(args, "--json")) {

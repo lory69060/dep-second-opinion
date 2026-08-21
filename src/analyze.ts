@@ -1,5 +1,6 @@
 import { formatMarkdown } from "./format-comment.js";
 import { diffPackageJson, parsePackageJsonText } from "./parse.js";
+import { DEFAULT_POLICY, type Policy } from "./policy/types.js";
 import { buildReviewResult } from "./score.js";
 import { fetchNpmMeta } from "./signals/npm-meta.js";
 import { queryOsvNpm } from "./signals/osv.js";
@@ -18,6 +19,8 @@ export interface AnalyzeOptions {
   /** Precomputed vulnerability map: "name@version" -> vuln ids present (offline stubs). */
   osvStub?: Record<string, Array<{ id: string; summary: string }>>;
   metaStub?: Record<string, { deprecated?: string; latestVersion?: string }>;
+  policy?: Policy;
+  policySource?: string | null;
 }
 
 async function enrichChange(
@@ -53,6 +56,9 @@ async function enrichChange(
   if (change.bump === "major") {
     notes.push("Major version bump — review changelog for breaking changes.");
   }
+  if (change.section === "devDependencies" && change.bump === "major") {
+    notes.push("Dev-only major bump: lower runtime risk, still check tooling breakage.");
+  }
 
   return {
     change,
@@ -60,6 +66,7 @@ async function enrichChange(
     meta,
     notes,
     localScore: 0,
+    evidence: [],
   };
 }
 
@@ -67,12 +74,14 @@ export async function analyzeChanges(
   changes: DependencyChange[],
   options: AnalyzeOptions = {},
 ): Promise<ReviewResult> {
+  const policy = options.policy ?? DEFAULT_POLICY;
   const enriched: ChangeAnalysis[] = [];
   for (const change of changes) {
+    if (policy.ignore.includes(change.name)) continue;
     enriched.push(await enrichChange(change, options));
   }
-  const result = buildReviewResult(enriched);
-  result.markdown = formatMarkdown(result);
+  const result = buildReviewResult(enriched, policy);
+  result.markdown = formatMarkdown(result, options.policySource ?? null);
   return result;
 }
 

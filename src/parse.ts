@@ -1,4 +1,4 @@
-import type { DependencyChange, VersionBump } from "./types.js";
+import type { DependencyChange, DependencySection, VersionBump } from "./types.js";
 
 function parseSemverParts(version: string): number[] | null {
   const cleaned = version.replace(/^v/, "").split("-")[0]?.split("+")[0];
@@ -31,17 +31,28 @@ type PackageJsonDeps = {
   peerDependencies?: Record<string, string>;
 };
 
-function collectDeps(pkg: PackageJsonDeps): Map<string, string> {
-  const map = new Map<string, string>();
-  for (const section of [
-    pkg.dependencies,
-    pkg.devDependencies,
-    pkg.optionalDependencies,
-    pkg.peerDependencies,
-  ]) {
-    if (!section) continue;
-    for (const [name, range] of Object.entries(section)) {
-      map.set(name, range.replace(/^[\^~>=<\s]+/, "").trim());
+type DepEntry = { version: string; section: DependencySection };
+
+const SECTIONS: DependencySection[] = [
+  "dependencies",
+  "devDependencies",
+  "optionalDependencies",
+  "peerDependencies",
+];
+
+function stripRange(range: string): string {
+  return range.replace(/^[\^~>=<\s]+/, "").trim();
+}
+
+function collectDeps(pkg: PackageJsonDeps): Map<string, DepEntry> {
+  const map = new Map<string, DepEntry>();
+  for (const section of SECTIONS) {
+    const block = pkg[section];
+    if (!block) continue;
+    for (const [name, range] of Object.entries(block)) {
+      // Prefer production section if duplicated.
+      if (map.has(name) && section !== "dependencies") continue;
+      map.set(name, { version: stripRange(range), section });
     }
   }
   return map;
@@ -58,8 +69,11 @@ export function diffPackageJson(
   const changes: DependencyChange[] = [];
 
   for (const name of names) {
-    const fromVersion = beforeMap.get(name) ?? null;
-    const toVersion = afterMap.get(name) ?? null;
+    const from = beforeMap.get(name);
+    const to = afterMap.get(name);
+    const fromVersion = from?.version ?? null;
+    const toVersion = to?.version ?? null;
+    if (fromVersion === toVersion && from?.section === to?.section) continue;
     if (fromVersion === toVersion) continue;
     changes.push({
       name,
@@ -67,6 +81,7 @@ export function diffPackageJson(
       fromVersion,
       toVersion,
       bump: classifyBump(fromVersion, toVersion),
+      section: to?.section ?? from?.section ?? "dependencies",
     });
   }
 
