@@ -48,6 +48,27 @@ test("policy can mark production major as HIGH_RISK", async () => {
   assert.match(result.markdown, /production\.major=high_risk/);
 });
 
+test("production minor exceeds auto_merge_max_bump=patch → REVIEW", async () => {
+  const policy = mergePolicy({
+    production: { autoMergeMaxBump: "patch", major: "review" },
+  });
+  const result = await analyzeChanges(
+    [
+      {
+        name: "debug",
+        ecosystem: "npm",
+        fromVersion: "4.3.4",
+        toVersion: "4.4.0",
+        bump: "minor",
+        section: "dependencies",
+      },
+    ],
+    { offline: true, policy },
+  );
+  assert.equal(result.verdict, "REVIEW_RECOMMENDED");
+  assert.match(result.markdown, /exceeds production\.auto_merge_max_bump=patch/);
+});
+
 test("ignore list drops packages", async () => {
   const policy = mergePolicy({ ignore: ["left-pad"] });
   const result = await analyzeChanges(

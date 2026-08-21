@@ -81,7 +81,15 @@ if [[ -n "${PR_TITLE:-}" ]]; then GATE_ARGS+=(--title "$PR_TITLE"); fi
 if [[ -n "${PR_LABELS:-}" ]]; then GATE_ARGS+=(--labels "$PR_LABELS"); fi
 if [[ -n "${CHANGED_CSV:-}" ]]; then GATE_ARGS+=(--changed "$CHANGED_CSV"); fi
 
+# HIGH_RISK sets CLI exit 2 (advisory). Do not abort before posting the comment.
+set +e
 node "$ROOT/dist/cli.js" analyze --from "$BEFORE" --to "$AFTER" --json --repo-root "$REPO_ROOT" "${GATE_ARGS[@]}" >"$JSON_OUT"
+ANALYZE_EC=$?
+set -e
+if [[ "$ANALYZE_EC" -ne 0 && "$ANALYZE_EC" -ne 2 ]]; then
+  echo "analyze failed with exit $ANALYZE_EC" >&2
+  exit "$ANALYZE_EC"
+fi
 
 VERDICT="$(node -e "const fs=require('fs'); const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); console.log(r.verdict)" "$JSON_OUT")"
 if [[ "$VERDICT" == "NO_COMMENT" ]]; then
@@ -107,3 +115,6 @@ else
   gh api -X POST "repos/${REPO}/issues/${PR_NUMBER}/comments" -F body=@"$BODY_FILE" >/dev/null
   echo "Created comment (verdict=$VERDICT target=$TARGET)"
 fi
+
+# Advisory: HIGH_RISK does not fail the Action (comment is the product).
+exit 0

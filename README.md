@@ -59,10 +59,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: lory69060/dep-second-opinion@v0.1.0
+      - uses: lory69060/dep-second-opinion@v0.1.1
 ```
 
-> Pin a release tag (e.g. `v0.1.0`). Avoid `@main` in other repos — it moves without notice.  
+> Pin a release tag (e.g. `v0.1.1`). Avoid `@main` in other repos — it moves without notice.  
 > Repo is private: the consuming workflow needs read access to this Action repo.
 
 ## Local CLI

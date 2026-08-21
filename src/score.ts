@@ -147,6 +147,16 @@ export function aggregateVerdict(
       reasons.push(
         `\`${c.change.name}\` within ${prod ? "production" : "development"}.auto_merge_max_bump=${scope.autoMergeMaxBump}`,
       );
+    } else if (
+      !c.osv.length &&
+      !c.meta?.deprecated &&
+      !bumpWithinAutoMerge(c.change.bump, scope.autoMergeMaxBump)
+    ) {
+      // Exceeds auto_merge band → at least REVIEW (do not leave SAFE on soft scores).
+      if (rank("REVIEW_RECOMMENDED") > rank(verdict)) verdict = "REVIEW_RECOMMENDED";
+      reasons.push(
+        `\`${c.change.name}\` exceeds ${prod ? "production" : "development"}.auto_merge_max_bump=${scope.autoMergeMaxBump}`,
+      );
     } else if (c.localScore >= 25) {
       if (rank("REVIEW_RECOMMENDED") > rank(verdict)) verdict = "REVIEW_RECOMMENDED";
       reasons.push(`\`${c.change.name}\` score ${c.localScore} exceeds soft threshold`);
