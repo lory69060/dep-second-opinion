@@ -56,14 +56,15 @@
 | 10 Phase3.0 | ✅ Action 可 pin | 打 `v0.1.0`；README 推荐 `uses: …@v0.1.0`（非 `@main`） |
 | 11 Phase3.1 | ✅ 试验协议 | 见下方「试验协议」；记录表 `trials/log.md` |
 | 12 Phase3.2 | ✅ 真实仓试验 | 外仓 [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) 已挂 `@v0.1.0`；[PR #1](https://github.com/lory69060/dep-second-opinion-trial/pull/1) → `REVIEW_RECOMMENDED`；log #1 |
-| 13 Phase3.3 | 🔄 凑样本 | 6/10；#3/#6 已用 v0.1.1 复验为 ok；见 `trials/log.md` |
+| 13 Phase3.3 | ✅ 凑样本 | 10/10；汇总误报/漏报 0%；见 `trials/log.md` |
 | 14 Phase3.4 | ✅ 修试验暴露缺陷 | `auto_merge` 超限→REVIEW；HIGH_RISK 发评论且 Action 绿；tag `v0.1.1` |
+| 15 Phase3.5 | ⬜ 留存/影响率 | 真实 Dependabot 场景补 opened/influenced；或卸装观察 14 天 |
 
 ## Phase 3 原则
 
 - 仍只评论、不改依赖
 - 杀伤标准：见试验协议「停做线」
-- 步骤 14 已验收并复验。说「继续」→ 补样本到 10 条
+- 步骤 13–14 已验收。说「继续」→ 开 **15（留存/影响）** 或产品化（公开 Action / 安装页）
 
 ## 试验协议（Phase 3.1）
 
