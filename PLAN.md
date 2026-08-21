@@ -53,4 +53,12 @@
 | 7 换壳 | ✅ GitHub Action | `.github/workflows/dep-second-opinion.yml` + `scripts/github-pr-review.sh` + `action.yml` |
 | 8 Phase1 | ✅ 做深 | 评论含 Why/Evidence；prod/dev 分策；Dependabot/Renovate/门禁（`pr-gate`） |
 | 9 Phase2 | ✅ 政策文件 | `.dep-second-opinion.yml` 可配置 auto_merge / major / osv / ignore |
+| 10 Phase3.0 | ✅ Action 可 pin | 打 `v0.1.0`；README 推荐 `uses: …@v0.1.0`（非 `@main`） |
+| 11 Phase3.1 | ⬜ 试验协议 | 写清误报/漏报/NO_COMMENT/留存怎么记 |
+| 12 Phase3.2 | ⬜ 真实仓试验 | ≥1 个外部仓挂 Action，对照 Dependabot/Renovate PR |
 
+## Phase 3 原则
+
+- 仍只评论、不改依赖
+- 杀伤标准：高误报、无人回看评论、相对 Bugbot 无垂直深度 → 停
+- 步骤 10 已验收；下一步等「继续」再开 11

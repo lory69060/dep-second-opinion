@@ -59,10 +59,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: lory69060/dep-second-opinion@main
+      - uses: lory69060/dep-second-opinion@v0.1.0
 ```
 
-> Composite action runs from this repository’s `action.yml` (pin a tag/SHA in production).
+> Pin a release tag (e.g. `v0.1.0`). Avoid `@main` in other repos — it moves without notice.  
+> Repo is private: the consuming workflow needs read access to this Action repo.
 
 ## Local CLI
 
