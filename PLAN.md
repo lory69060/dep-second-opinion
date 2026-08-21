@@ -54,11 +54,88 @@
 | 8 Phase1 | ✅ 做深 | 评论含 Why/Evidence；prod/dev 分策；Dependabot/Renovate/门禁（`pr-gate`） |
 | 9 Phase2 | ✅ 政策文件 | `.dep-second-opinion.yml` 可配置 auto_merge / major / osv / ignore |
 | 10 Phase3.0 | ✅ Action 可 pin | 打 `v0.1.0`；README 推荐 `uses: …@v0.1.0`（非 `@main`） |
-| 11 Phase3.1 | ⬜ 试验协议 | 写清误报/漏报/NO_COMMENT/留存怎么记 |
-| 12 Phase3.2 | ⬜ 真实仓试验 | ≥1 个外部仓挂 Action，对照 Dependabot/Renovate PR |
+| 11 Phase3.1 | ✅ 试验协议 | 见下方「试验协议」；记录表 `trials/log.md` |
+| 12 Phase3.2 | ⬜ 真实仓试验 | ≥1 个外部仓挂 `@v0.1.0`，按协议填 log |
 
 ## Phase 3 原则
 
 - 仍只评论、不改依赖
-- 杀伤标准：高误报、无人回看评论、相对 Bugbot 无垂直深度 → 停
-- 步骤 10 已验收；下一步等「继续」再开 11
+- 杀伤标准：见试验协议「停做线」
+- 步骤 11 已验收；下一步等「继续」再开 12
+
+## 试验协议（Phase 3.1）
+
+### 范围
+
+| 项 | 约定 |
+| :--- | :--- |
+| 对象仓 | 自有 / 可装 private Action 的 npm 仓；挂 `lory69060/dep-second-opinion@v0.1.0` |
+| PR 类型 | Dependabot / Renovate / 标题含 bump·update 的依赖 PR；混杂功能 PR 应被门禁跳过 |
+| 样本量 | 先 **10 条** 依赖 PR（可跨仓累计）；不足 10 条不判杀 |
+| 窗口 | 挂上后 **14 天**，或凑满 10 条先到为准 |
+| 对照 | 人工 merge 决定（或事后是否 revert / 紧急回滚） |
+
+### Verdict 对错怎么记
+
+人工在 merge 前给一个「应有标签」`expected`（只选一个）：
+
+| expected | 含义 |
+| :--- | :--- |
+| `SAFE` | 可直接合，无需人审细节 |
+| `REVIEW` | 应停下来看（major / 行为变更 / 不确定） |
+| `BLOCK` | 不应合（已知洞、废弃、破坏性） |
+| `SKIP` | 不应评论（非依赖 PR / 门禁应沉默） |
+
+再对照 bot 的 `actual`（评论里的 Verdict；无评论或仅 `NO_COMMENT` 记 `NO_COMMENT`）：
+
+| actual \ expected | SAFE | REVIEW | BLOCK | SKIP |
+| :--- | :--- | :--- | :--- | :--- |
+| `SAFE_TO_MERGE` | ✅ 真阴性 | **漏报** | **漏报** | 误扰 |
+| `REVIEW_RECOMMENDED` | **误报** | ✅ | 偏松（记半漏） | 误扰 |
+| `HIGH_RISK` | **误报** | 偏严（记半误） | ✅ | 误扰 |
+| `NO_COMMENT` / 无帖 | 漏帮助* | **漏报** | **漏报** | ✅ 门禁对 |
+
+\*「漏帮助」：人本来想快速合，bot 没给 SAFE——不进误报率，单独计「沉默率」。
+
+**计数（每条 PR 一行，互斥主标签）：**
+
+- **误报** = bot 比人工更严，且阻碍/干扰了本可 SAFE 的合并（含把 SAFE 打成 REVIEW/HIGH_RISK）
+- **漏报** = bot 比人工更松，或该喊没喊（BLOCK/REVIEW → SAFE / NO_COMMENT）
+- **半误 / 半漏** = REVIEW↔HIGH_RISK 错位；汇总时各计 0.5
+- **门禁正确** = expected=SKIP 且 NO_COMMENT/无帖
+
+### 留存怎么记
+
+每条 PR 在 merge 后 **≥3 天** 再填：
+
+| 字段 | 怎么填 |
+| :--- | :--- |
+| `human_opened_comment` | 是否点开过 bot 评论（自己回忆 / 是否回复过）Y/N/未知 |
+| `influenced_merge` | 评论是否改变了 merge/等一等/加测？Y/N/未知 |
+| `revisit` | 14 天窗口内是否又回来改 policy / 再开同类 PR 时仍启用 Action？Y/N |
+
+**留存率** = 窗口结束时「仓上 Action 仍启用」的仓数 / 试验仓数。  
+单仓试验时：若 14 天内关掉 workflow 或 pin 去掉 → 留存失败。
+
+### 汇总指标（满 10 条后算）
+
+| 指标 | 公式 | 健康带 |
+| :--- | :--- | :--- |
+| 误报率 | 误报 / 有效条* | ≤ 20% |
+| 漏报率 | 漏报 / 有效条 | ≤ 15% |
+| 门禁准确 | 门禁正确 / SKIP 条 | ≥ 80%（若有 SKIP） |
+| 影响率 | influenced_merge=Y / 有效条 | ≥ 30%（过低=没人看） |
+| 留存 | 见上 | 试验仓仍启用 |
+
+\*有效条 = 总条 − expected=SKIP 且门禁正确的条（分母不算「本该沉默且沉默对了」）。
+
+### 停做线（命中任一条 → 停扩、先改引擎或杀）
+
+1. 误报率 **> 35%**，或连续 5 条 SAFE 被打成 REVIEW/HIGH_RISK  
+2. 漏报率 **> 25%**，或任一条 BLOCK 被打成 SAFE_TO_MERGE  
+3. 影响率 **< 10%** 且打开率明显低（评论没人看）  
+4. 14 天内卸掉 Action（留存失败）且无「信号不准」以外的外部原因
+
+### 记录表
+
+逐条写入 [`trials/log.md`](./trials/log.md)。步骤 12 开始填实数据。
