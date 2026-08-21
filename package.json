@@ -2,7 +2,7 @@
   "name": "dep-second-opinion",
   "version": "0.1.0",
   "private": true,
-  "description": "Opt-in second opinion for dependency upgrade PRs (npm). Origin Automation ready.",
+  "description": "Opt-in second opinion for npm dependency upgrade PRs. GitHub Action + CLI.",
   "type": "module",
   "bin": {
     "dep-review": "./dist/cli.js"

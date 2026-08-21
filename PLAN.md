@@ -32,6 +32,13 @@
 - 信号：版本跨度（major/minor/patch）+ OSV 漏洞查询 + npm 包元数据（可选网络）
 - 不做：GitHub App、自动换包 PR、Stripe、全网扫描
 
+## 托管策略（2026-08-21）
+
+- **正式壳（对外）**：**GitHub Actions** → 评论作者 `github-actions[bot]`，邮件是 GitHub 通知（非 Cursor 标题）。
+- **演示壳**：[Cursor Automation](https://github.com/lory69060/dep-second-opinion/pull/1) 已验证可跑，仅作内部 demo。
+- **Origin** `zhu-xiaowei/dep-second-opinion`：备份；Automation 触发暂不作为主路径。
+- **引擎**：同一套 `dep-review` CLI（Action / CLI / 可选 Automation 共用）。
+
 ## 验收记录
 
 | 步骤 | 状态 | 证据 |
@@ -42,5 +49,6 @@
 | 3 | ✅ | `automations/origin-pr-review.md` 含 HARD RULES 禁改代码 |
 | 4 | ✅ | `node --test`：7 passed, 0 failed |
 | 5 | ✅ 仓已推送 | `zhu-xiaowei/dep-second-opinion` → Origin |
-| 6 E2E | ⏳ | PR [#1](https://cursor.com/codebase/zhu-xiaowei/dep-second-opinion/pull/1) 已开；本地 CLI 对 chalk 4→5 输出 `REVIEW_RECOMMENDED`；Automation 评论尚未出现（需 Save/Activate） |
+| 6 E2E | ✅ GitHub Automation demo | [GH PR #1](https://github.com/lory69060/dep-second-opinion/pull/1) Cursor Automation 评论 `REVIEW_RECOMMENDED` |
+| 7 换壳 | ✅ GitHub Action | `.github/workflows/dep-second-opinion.yml` + `scripts/github-pr-review.sh` + `action.yml` |
 
