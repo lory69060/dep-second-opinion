@@ -18,7 +18,7 @@ Pin：`lory69060/dep-second-opinion@v0.2.0`（Phase 4 起）
 | 10 | same | [#10](https://github.com/lory69060/dep-second-opinion-trial/pull/10) | github-actions / left-pad ignored | NO_COMMENT | SKIP | ok | ? | ? | policy ignore；日志 not posting | 2026-08-21 |
 | 11 | same | [#16](https://github.com/lory69060/dep-second-opinion-trial/pull/16) | github-actions / hallucinated pkg | HIGH_RISK | BLOCK | ok | n/a | n/a | v0.2.0 金丝雀；未合入 | 2026-08-22 |
 | 12 | same | [#11](https://github.com/lory69060/dep-second-opinion-trial/pull/11) | dependabot / bump debug minor | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；prod minor | 2026-08-22 |
-| 13 | same | [#12](https://github.com/lory69060/dep-second-opinion-trial/pull/12) | dependabot / bump ms patch | SAFE_TO_MERGE | SAFE | ok | ? | ? | **真实 Dependabot**；prod patch | 2026-08-22 |
+| 13 | same | [#12](https://github.com/lory69060/dep-second-opinion-trial/pull/12) | dependabot / bump ms patch | SAFE_TO_MERGE | SAFE | ok | ? | ? | **真实 Dependabot**；prod patch；**已合** 2026-08-22（影响率 ≥3 天后补） | 2026-08-22 |
 | 14 | same | [#13](https://github.com/lory69060/dep-second-opinion-trial/pull/13) | dependabot / bump chalk major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；prod major | 2026-08-22 |
 | 15 | same | [#14](https://github.com/lory69060/dep-second-opinion-trial/pull/14) | dependabot / bump typescript major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
 | 16 | same | [#15](https://github.com/lory69060/dep-second-opinion-trial/pull/15) | dependabot / bump @types/node major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
