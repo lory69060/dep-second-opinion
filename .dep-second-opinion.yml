@@ -19,6 +19,18 @@ development:
 # Escalate when signals fire
 on_osv: high_risk
 on_deprecated: high_risk
+# Package name or target version not on npm (hallucinated / unpublished)
+on_registry_missing: high_risk
+
+# Supply-chain heuristics for newly added dependencies only
+supply_chain:
+  # 0 = disable age check
+  new_package_max_age_days: 30
+  # review | high_risk | ignore
+  on_new_package: review
+  require_repository: false
+  # 0 = skip downloads API
+  min_weekly_downloads: 0
 
 ignore:
   # - some-internal-package
