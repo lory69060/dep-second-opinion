@@ -63,12 +63,13 @@
 | 17 Phase3.7 | ✅ 公开 Action | 仓 **public**；Path A 优先；试验仓 main 已 `uses: …@v0.1.1`；PR#2 Path A 复验通过 |
 | 18 Phase4.0 | ✅ AI/供应链信号 | `on_registry_missing` + `supply_chain`；fixture `npm-hallucinated`；tag **`v0.2.0`**；试验仓 [PR#16](https://github.com/lory69060/dep-second-opinion-trial/pull/16) 金丝雀 `HIGH_RISK`；[PR#17](https://github.com/lory69060/dep-second-opinion-trial/pull/17) pin 合入 |
 | 19 Phase5.0 | ✅ 真实 Dependabot 入 log | 试验仓 PR #11–#15（Dependabot）Verdict 已记；见 `trials/log.md` #12–#16 |
+| 20 Phase5.1 | ✅ 试验仓清理 + Dependabot 文档 | 关闭已记入手动样例 PR #1–#10；install 注明 Dependabot 须 Path A |
 
 ## Phase 5 — 真实依赖机器人闭环（2026-08-22）
 
 - **不做**：GitHub App 品牌号、Marketplace 上架、第二生态（PyPI 等）
-- **做**：把 Dependabot 真 PR 记入试验表；SAFE 可合的开影响率计时；衔接步骤 15 留存窗
-- 步骤 19 验收：≥5 条 Dependabot PR 有 actual/expected/主标签
+- **做**：Dependabot 真 PR 入表；SAFE 合入开影响率计时；试验仓卫生；Dependabot×secret 陷阱写入安装文档
+- 步骤 19–20 已验收。下一步：步骤 15 T1（9/4）或 Phase5.2 产品能力
 
 ## Phase 4 — AI / 供应链加深（2026-08-22）
 
@@ -81,7 +82,7 @@
 
 - 仍只评论、不改依赖
 - 杀伤标准：见试验协议「停做线」
-- 步骤 19（Phase5.0）已验收。步骤 15 的 T1/影响率：Dependabot 真 PR 已入表，merge≥3 天后补 opened/influenced；窗至 **2026-09-04**
+- 步骤 20（Phase5.1）已验收。步骤 15 的 T1/影响率：Dependabot 真 PR 已入表；窗至 **2026-09-04**。说「继续」→ Phase5.2 或等窗
 
 ## 试验协议（Phase 3.1）
 
