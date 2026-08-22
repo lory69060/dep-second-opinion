@@ -5,7 +5,7 @@
 | 项 | 值 |
 | :--- | :--- |
 | 试验仓 | [lory69060/dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) |
-| Action | 仍启用；pin `v0.1.1`（**public Path A** `uses: lory69060/dep-second-opinion@v0.1.1`） |
+| Action | 仍启用；pin `v0.2.0`（**public Path A** `uses: lory69060/dep-second-opinion@v0.2.0`） |
 | 信号矩阵 | 10/10 已记；误报/漏报 0%（见 `log.md`） |
 | Dependabot | 本步启用（见仓内 `.github/dependabot.yml`） |
 | 观察窗结束 | **2026-09-04**（T0 + 14 天） |
@@ -17,6 +17,7 @@
 | 日期 | Action 仍启用？ | pin 仍为 v0.1.x？ | 备注 |
 | :--- | :--- | :--- | :--- |
 | 2026-08-21 T0 | Y | v0.1.1 | |
+| 2026-08-22 | Y | v0.2.0 | Phase4 金丝雀 HIGH_RISK ok；main pin 升级 |
 | 2026-09-04 T1 | | | 卸装 / 改 pin / 关掉 workflow → 留存失败 |
 
 ### 影响率（仅 **Dependabot/Renovate 真实 PR**；主动造样不计入）
