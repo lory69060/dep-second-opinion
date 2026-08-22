@@ -122,6 +122,13 @@ Copy [`.dep-second-opinion.yml`](../.dep-second-opinion.yml) to the consuming re
 3. Mixed feature+manifest PRs should stay silent (`NO_COMMENT`) when `require_dependency_context: true`.
 4. A PR that adds a **non-existent** package name should be `HIGH_RISK` (registry missing).
 
+### Dependabot + secrets
+
+Dependabot-triggered workflows **do not** receive normal repository secrets (e.g. `DEP_REVIEW_READ`) unless you also add them under **Settings → Secrets → Dependabot**.
+
+- Prefer **Path A** (public `uses: lory69060/dep-second-opinion@v0.2.0`) — no extra secret.
+- Path B on Dependabot PRs will fail with `Input required and not supplied: token` if the secret is missing from Dependabot secrets.
+
 ## What this is not
 
 - Not Socket / Snyk (no full supply-chain scan product)
