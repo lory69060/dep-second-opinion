@@ -18,6 +18,12 @@ development:
   major: review
 on_osv: high_risk
 on_deprecated: high_risk
+on_registry_missing: high_risk
+supply_chain:
+  new_package_max_age_days: 30
+  on_new_package: review
+  require_repository: false
+  min_weekly_downloads: 0
 ignore: []
 ```
 
@@ -44,10 +50,10 @@ See **[docs/install.md](./docs/install.md)** (Path A public composite · Path B 
 
 ```yaml
 # Path A (when Action repo is public)
-- uses: lory69060/dep-second-opinion@v0.1.1
+- uses: lory69060/dep-second-opinion@v0.2.0
 ```
 
-> Pin a release tag (e.g. `v0.1.1`). Avoid `@main`.  
+> Pin a release tag (e.g. `v0.2.0`). Avoid `@main`.  
 > Action repo is **public** — Path A is the default. Path B remains for private forks.
 
 ## Local CLI

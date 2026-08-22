@@ -1,0 +1,8 @@
+{
+  "name": "fixture-hallucinated",
+  "private": true,
+  "dependencies": {
+    "lodash": "4.17.21",
+    "awesome-http-client-helper": "1.0.0"
+  }
+}

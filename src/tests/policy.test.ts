@@ -16,6 +16,12 @@ development:
   major: review
 on_osv: review
 on_deprecated: high_risk
+on_registry_missing: review
+supply_chain:
+  new_package_max_age_days: 14
+  on_new_package: high_risk
+  require_repository: true
+  min_weekly_downloads: 100
 ignore:
   - left-pad
 `);
@@ -23,6 +29,11 @@ ignore:
   assert.equal(policy.production.major, "high_risk");
   assert.equal(policy.development.autoMergeMaxBump, "major");
   assert.equal(policy.onOsv, "review");
+  assert.equal(policy.onRegistryMissing, "review");
+  assert.equal(policy.supplyChain.newPackageMaxAgeDays, 14);
+  assert.equal(policy.supplyChain.onNewPackage, "high_risk");
+  assert.equal(policy.supplyChain.requireRepository, true);
+  assert.equal(policy.supplyChain.minWeeklyDownloads, 100);
   assert.deepEqual(policy.ignore, ["left-pad"]);
 });
 

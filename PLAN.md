@@ -61,6 +61,14 @@
 | 15 Phase3.5 | 🔄 留存/影响率 | T0 + Dependabot 已就位；窗至 **2026-09-04**；见 `trials/retention.md` |
 | 16 Phase3.6 | ✅ 安装文档 | [`docs/install.md`](./docs/install.md) Path A/B；README 链到安装页 |
 | 17 Phase3.7 | ✅ 公开 Action | 仓 **public**；Path A 优先；试验仓 main 已 `uses: …@v0.1.1`；PR#2 Path A 复验通过 |
+| 18 Phase4.0 | ✅ AI/供应链信号 | `on_registry_missing` + `supply_chain`；fixture `npm-hallucinated`；tag **`v0.2.0`** |
+
+## Phase 4 — AI / 供应链加深（2026-08-22）
+
+- **不做**：托管沙箱、自动改依赖、语义影响图
+- **做**：npm 404 / 版本未发布 → 默认 `HIGH_RISK`；新增依赖过新 → 默认 `REVIEW`
+- 政策键：`on_registry_missing`、`supply_chain.*`（见 `.dep-second-opinion.yml`）
+- 版本意向：`v0.2.0`（404 从「无信号」变为硬门禁，对消费方为行为变更）
 
 ## Phase 3 原则
 

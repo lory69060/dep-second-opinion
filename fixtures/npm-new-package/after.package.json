@@ -1,0 +1,7 @@
+{
+  "name": "fixture-new-package",
+  "private": true,
+  "dependencies": {
+    "brand-new-pkg": "0.1.0"
+  }
+}

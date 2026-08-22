@@ -1,7 +1,7 @@
 # Install dep-second-opinion
 
 Comment-only second opinion on npm dependency upgrade PRs.  
-Pin **`v0.1.1`** (or newer `v0.1.x`). Never uses `@main` in customer repos.
+Pin **`v0.2.0`** (or newer `v0.2.x`). Never uses `@main` in customer repos.
 
 ## Before you start
 
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: lory69060/dep-second-opinion@v0.1.1
+      - uses: lory69060/dep-second-opinion@v0.2.0
 ```
 
 ## Path B — private / air-gapped (optional)
@@ -77,7 +77,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: lory69060/dep-second-opinion
-          ref: v0.1.1
+          ref: v0.2.0
           token: ${{ secrets.DEP_REVIEW_READ }}
           path: .dep-review
 
@@ -105,16 +105,26 @@ jobs:
 
 ## Policy (optional)
 
-Copy [`.dep-second-opinion.yml`](../.dep-second-opinion.yml) to the consuming repo root and tune `auto_merge_max_bump` / `ignore`.
+Copy [`.dep-second-opinion.yml`](../.dep-second-opinion.yml) to the consuming repo root.
+
+| Key | Meaning |
+| :--- | :--- |
+| `auto_merge_max_bump` | Clean bumps at/below this may be `SAFE_TO_MERGE` |
+| `on_osv` / `on_deprecated` | Escalate known vulns / deprecated packages |
+| `on_registry_missing` | Package or version **not on npm** (hallucinated / unpublished) → default `high_risk` |
+| `supply_chain.new_package_max_age_days` | Newly **added** deps younger than N days → `on_new_package` (default `review`) |
+| `ignore` | Exact package names to skip |
 
 ## Verify
 
 1. Open a Dependabot/Renovate PR (or a title containing `Bump` / `deps`) that only touches manifests.
 2. Expect a `github-actions[bot]` comment with Verdict / Why / Evidence.
 3. Mixed feature+manifest PRs should stay silent (`NO_COMMENT`) when `require_dependency_context: true`.
+4. A PR that adds a **non-existent** package name should be `HIGH_RISK` (registry missing).
 
 ## What this is not
 
 - Not Socket / Snyk (no full supply-chain scan product)
+- Not a hosted code sandbox / CI runner
 - Not auto-merge / auto-replace of packages
 - Not a Cursor-branded bot (comments are GitHub Actions)
