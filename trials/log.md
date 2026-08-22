@@ -16,25 +16,33 @@ Pin：`lory69060/dep-second-opinion@v0.2.0`（Phase 4 起）
 | 8 | same | [#8](https://github.com/lory69060/dep-second-opinion-trial/pull/8) | github-actions / left-pad minor | HIGH_RISK | BLOCK | ok | ? | ? | npm deprecated → on_deprecated（初预期 REVIEW，按信号改 expected） | 2026-08-21 |
 | 9 | same | [#9](https://github.com/lory69060/dep-second-opinion-trial/pull/9) | github-actions / debug+ms | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | multi：minor 抬级 | 2026-08-21 |
 | 10 | same | [#10](https://github.com/lory69060/dep-second-opinion-trial/pull/10) | github-actions / left-pad ignored | NO_COMMENT | SKIP | ok | ? | ? | policy ignore；日志 not posting | 2026-08-21 |
-| 11 | same | [#16](https://github.com/lory69060/dep-second-opinion-trial/pull/16) | github-actions / chore(deps) hallucinated pkg | HIGH_RISK | BLOCK | ok | n/a | n/a | v0.2.0 金丝雀；registry missing；未合入 | 2026-08-22 |
+| 11 | same | [#16](https://github.com/lory69060/dep-second-opinion-trial/pull/16) | github-actions / hallucinated pkg | HIGH_RISK | BLOCK | ok | n/a | n/a | v0.2.0 金丝雀；未合入 | 2026-08-22 |
+| 12 | same | [#11](https://github.com/lory69060/dep-second-opinion-trial/pull/11) | dependabot / bump debug minor | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；prod minor | 2026-08-22 |
+| 13 | same | [#12](https://github.com/lory69060/dep-second-opinion-trial/pull/12) | dependabot / bump ms patch | SAFE_TO_MERGE | SAFE | ok | ? | ? | **真实 Dependabot**；prod patch | 2026-08-22 |
+| 14 | same | [#13](https://github.com/lory69060/dep-second-opinion-trial/pull/13) | dependabot / bump chalk major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；prod major | 2026-08-22 |
+| 15 | same | [#14](https://github.com/lory69060/dep-second-opinion-trial/pull/14) | dependabot / bump typescript major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
+| 16 | same | [#15](https://github.com/lory69060/dep-second-opinion-trial/pull/15) | dependabot / bump @types/node major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
 
 **主标签**：`ok` · `误报` · `漏报` · `半误` · `半漏` · `门禁对` · `漏帮助`  
-**opened / influenced**：`Y` / `N` / `?`（merge ≥3 天后补；本轮主动样本不测留存影响）
+**opened / influenced**：`Y` / `N` / `?`（merge ≥3 天后补）
 
-## 汇总（10/10）
+## 汇总
+
+### 主动矩阵（#1–#10）
 
 | 指标 | 值 | 对照健康带 |
 | :--- | :- | :--- |
-| 有效条 | 8（排除 #5 门禁对；#10 ignore 记入有效且 ok） | |
-| 误报率 | 0/8 = 0% | ≤20% |
-| 漏报率 | 0/8 = 0% | ≤15% |
-| 门禁准确 | 1/1 = 100% | ≥80% |
-| 影响率 | 未测（主动造样） | ≥30% |
-| 留存 | 仍启用 @v0.2.0 | |
+| 有效条 | 8 | |
+| 误报率 | 0% | ≤20% |
+| 漏报率 | 0% | ≤15% |
+| 门禁准确 | 100% | ≥80% |
+| 影响率 | 未测 | ≥30% |
 | 停做线 | **未触** | |
 
-### 备注
+### Dependabot 真 PR（#12–#16 表行 / GH #11–#15）
 
-- 有效条分母：按协议去掉「SKIP 且门禁对」的 #5；#10 为政策 ignore 的预期沉默，计 ok。
-- 影响率 / opened 需真实 Dependabot 场景补；主动矩阵只验证信号准确度。
-- Phase4 #11：幻觉包金丝雀在 `@v0.2.0` 下正确 `HIGH_RISK`；PR 关闭未合，避免污染 main。
+| 指标 | 值 |
+| :--- | :- |
+| 条数 | 5；主标签全 ok |
+| 影响率 | 待 merge ≥3 天后填 |
+| 备注 | 曾因 Path B + Dependabot 读不到 secret 整批红；改 Path A 后复跑全绿 |
