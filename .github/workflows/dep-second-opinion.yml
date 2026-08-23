@@ -2,6 +2,8 @@ name: dep-second-opinion
 
 # Formal delivery shell: GitHub Actions (not Cursor Automation).
 # Comments appear as github-actions[bot]; PR emails are GitHub notifications.
+# Consumers: pin uses: lory69060/dep-second-opinion@v0.2.0 (see docs/install.md).
+# This repo dogfoods the analyzer from source on PRs to main.
 
 on:
   pull_request:
