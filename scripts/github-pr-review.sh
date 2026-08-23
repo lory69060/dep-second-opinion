@@ -100,10 +100,12 @@ fi
 MARKER="<!-- dep-second-opinion -->"
 node -e "
 const fs=require('fs');
+const path=require('path');
 const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));
-const footer='\n\n_Posted by **dep-second-opinion** via GitHub Actions. Comment-only; never modifies dependency files._\n';
+const ver=JSON.parse(fs.readFileSync(path.join(process.argv[3],'package.json'),'utf8')).version;
+const footer='\n\n_Posted by **dep-second-opinion** @v'+ver+' via GitHub Actions. Comment-only; never modifies dependency files._\n';
 fs.writeFileSync(process.argv[2], r.markdown + footer);
-" "$JSON_OUT" "$BODY_FILE"
+" "$JSON_OUT" "$BODY_FILE" "$ROOT"
 
 EXISTING_ID="$(gh api "repos/${REPO}/issues/${PR_NUMBER}/comments" --paginate \
   --jq ".[] | select(.body | contains(\"${MARKER}\")) | .id" 2>/dev/null | head -n1 || true)"
