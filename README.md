@@ -38,32 +38,17 @@ Workflow: [`.github/workflows/dep-second-opinion.yml`](./.github/workflows/dep-s
 
 On any PR that touches `package.json` / lockfiles, it analyzes base→head and upserts a PR comment.
 
-### Use on another repo (composite action)
+### Use on another repo
+
+See **[docs/install.md](./docs/install.md)** (Path A public composite · Path B private checkout + `DEP_REVIEW_READ`).
 
 ```yaml
-# .github/workflows/dep-second-opinion.yml
-name: dep-second-opinion
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths: ["**/package.json", "**/pnpm-lock.yaml", "**/package-lock.json"]
-
-permissions:
-  contents: read
-  pull-requests: write
-
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: lory69060/dep-second-opinion@v0.1.1
+# Path A (when Action repo is public)
+- uses: lory69060/dep-second-opinion@v0.1.1
 ```
 
-> Pin a release tag (e.g. `v0.1.1`). Avoid `@main` in other repos — it moves without notice.  
-> Repo is private: the consuming workflow needs read access to this Action repo.
+> Pin a release tag (e.g. `v0.1.1`). Avoid `@main`.  
+> Action repo is **public** — Path A is the default. Path B remains for private forks.
 
 ## Local CLI
 
