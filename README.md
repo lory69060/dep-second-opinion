@@ -42,6 +42,9 @@ PR emails are normal **GitHub** notifications — not Cursor-branded.
 
 Workflow: [`.github/workflows/dep-second-opinion.yml`](./.github/workflows/dep-second-opinion.yml)
 
+This repository **dogfoods** the analyzer from source (build + `scripts/github-pr-review.sh`).  
+Other repos should pin **`uses: lory69060/dep-second-opinion@v0.2.0`** — see [install guide](./docs/install.md).
+
 On any PR that touches `package.json` / lockfiles, it analyzes base→head and upserts a PR comment.
 
 ### Use on another repo (composite action)
