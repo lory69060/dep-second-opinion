@@ -74,6 +74,10 @@ node dist/cli.js analyze --from fixtures/npm-minor/before.package.json --to fixt
 
 Exit codes: `0` ok · `1` error · `2` `HIGH_RISK`
 
+## Changelog
+
+See [`CHANGELOG.md`](./CHANGELOG.md) for release notes (`v0.1.1` → `v0.2.0` behavior changes).
+
 ## Plan
 
 See [`PLAN.md`](./PLAN.md).
