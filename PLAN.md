@@ -56,14 +56,33 @@
 | 10 Phase3.0 | ✅ Action 可 pin | 打 `v0.1.0`；README 推荐 `uses: …@v0.1.0`（非 `@main`） |
 | 11 Phase3.1 | ✅ 试验协议 | 见下方「试验协议」；记录表 `trials/log.md` |
 | 12 Phase3.2 | ✅ 真实仓试验 | 外仓 [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) 已挂 `@v0.1.0`；[PR #1](https://github.com/lory69060/dep-second-opinion-trial/pull/1) → `REVIEW_RECOMMENDED`；log #1 |
-| 13 Phase3.3 | 🔄 凑样本 | 已 6/10；修缺陷后用 v0.1.1 复验 #3/#6 再补 |
-| 14 Phase3.4 | ✅ 修试验暴露缺陷 | `auto_merge_max_bump` 超限→REVIEW；HIGH_RISK 仍发评论且 Action 绿；`v0.1.1` |
+| 13 Phase3.3 | ✅ 凑样本 | 10/10；汇总误报/漏报 0%；见 `trials/log.md` |
+| 14 Phase3.4 | ✅ 修试验暴露缺陷 | `auto_merge` 超限→REVIEW；HIGH_RISK 发评论且 Action 绿；tag `v0.1.1` |
+| 15 Phase3.5 | 🔄 留存/影响率 | T0 + Dependabot 已就位；窗至 **2026-09-04**；见 `trials/retention.md` |
+| 16 Phase3.6 | ✅ 安装文档 | [`docs/install.md`](./docs/install.md) Path A/B；README 链到安装页 |
+| 17 Phase3.7 | ✅ 公开 Action | 仓 **public**；Path A 优先；试验仓 main 已 `uses: …@v0.1.1`；PR#2 Path A 复验通过 |
+| 18 Phase4.0 | ✅ AI/供应链信号 | `on_registry_missing` + `supply_chain`；fixture `npm-hallucinated`；tag **`v0.2.0`**；试验仓 [PR#16](https://github.com/lory69060/dep-second-opinion-trial/pull/16) 金丝雀 `HIGH_RISK`；[PR#17](https://github.com/lory69060/dep-second-opinion-trial/pull/17) pin 合入 |
+| 19 Phase5.0 | ✅ 真实 Dependabot 入 log | 试验仓 PR #11–#15（Dependabot）Verdict 已记；见 `trials/log.md` #12–#16 |
+| 20 Phase5.1 | ✅ 试验仓清理 + Dependabot 文档 | 关闭已记入手动样例 PR #1–#10；install 注明 Dependabot 须 Path A |
+
+## Phase 5 — 真实依赖机器人闭环（2026-08-22）
+
+- **不做**：GitHub App 品牌号、Marketplace 上架、第二生态（PyPI 等）
+- **做**：Dependabot 真 PR 入表；SAFE 合入开影响率计时；试验仓卫生；Dependabot×secret 陷阱写入安装文档
+- 步骤 19–20 已验收。下一步：步骤 15 T1（9/4）或 Phase5.2 产品能力
+
+## Phase 4 — AI / 供应链加深（2026-08-22）
+
+- **不做**：托管沙箱、自动改依赖、语义影响图
+- **做**：npm 404 / 版本未发布 → 默认 `HIGH_RISK`；新增依赖过新 → 默认 `REVIEW`
+- 政策键：`on_registry_missing`、`supply_chain.*`（见 `.dep-second-opinion.yml`）
+- 版本意向：`v0.2.0`（404 从「无信号」变为硬门禁，对消费方为行为变更）
 
 ## Phase 3 原则
 
 - 仍只评论、不改依赖
 - 杀伤标准：见试验协议「停做线」
-- 步骤 14 已验收；说「继续」→ 复验 #3/#6 并补样本到 10
+- 步骤 20（Phase5.1）已验收。步骤 15 的 T1/影响率：Dependabot 真 PR 已入表；窗至 **2026-09-04**。说「继续」→ Phase5.2 或等窗
 
 ## 试验协议（Phase 3.1）
 
