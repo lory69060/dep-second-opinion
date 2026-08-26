@@ -3,6 +3,8 @@
 Opt-in **second opinion** for npm dependency upgrade PRs.  
 **Comment-only** — never edits `package.json` / lockfiles.
 
+**Progress board:** [`BOARD.md`](./BOARD.md) · roadmap [`PLAN.md`](./PLAN.md)
+
 ## Repository policy
 
 Add `.dep-second-opinion.yml` at the repo root (see example in this repository):
