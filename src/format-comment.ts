@@ -61,6 +61,15 @@ export function formatMarkdown(
     for (const e of evidence) {
       lines.push(`  - ${e}`);
     }
+    if (meta?.registryStatus === "package_missing") {
+      lines.push(
+        "- ⚠️ Registry: package **not found** on npm (possible hallucinated / slopsquat dependency)",
+      );
+    } else if (meta?.registryStatus === "version_missing") {
+      lines.push(
+        `- ⚠️ Registry: version \`${change.toVersion}\` **not published** on npm`,
+      );
+    }
     if (meta?.deprecated) {
       lines.push(`- ⚠️ Deprecated: ${meta.deprecated}`);
     }

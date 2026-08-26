@@ -27,13 +27,30 @@ export interface OsvVulnerability {
   references?: string[];
 }
 
+/** How the npm registry lookup resolved for this package/version. */
+export type RegistryStatus =
+  | "ok"
+  | "package_missing"
+  | "version_missing"
+  | "lookup_failed"
+  | "skipped";
+
 export interface PackageMeta {
   name: string;
+  registryStatus: RegistryStatus;
   latestVersion?: string;
+  /** Package-level `time.created` from the registry (ISO). */
+  created?: string;
+  /** Publish time of the target version (ISO). */
+  versionPublished?: string;
   modified?: string;
   description?: string;
   license?: string;
   deprecated?: string;
+  /** True when `repository` is present on the registry document. */
+  hasRepository?: boolean;
+  /** Weekly download count when fetched; omit when not queried. */
+  weeklyDownloads?: number;
 }
 
 export interface ChangeAnalysis {

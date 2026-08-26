@@ -1,13 +1,31 @@
 import type { VersionBump } from "../types.js";
 
 export type EscalateLevel = "review" | "high_risk";
+/** Escalate, or skip the signal entirely. */
+export type SignalAction = EscalateLevel | "ignore";
 export type AutoMergeMaxBump = "none" | "patch" | "minor" | "major";
 
 export interface ScopePolicy {
-  /** Bumps at or below this may be SAFE_TO_MERGE when no OSV/deprecation. */
+  /** Bumps at or below this may be SAFE_TO_MERGE when no hard signals fire. */
   autoMergeMaxBump: AutoMergeMaxBump;
   /** How to treat major bumps in this scope. */
   major: EscalateLevel;
+}
+
+export interface SupplyChainPolicy {
+  /**
+   * For newly added deps (no fromVersion): REVIEW/HIGH when package `created`
+   * is newer than this many days. `0` disables the age check.
+   */
+  newPackageMaxAgeDays: number;
+  onNewPackage: SignalAction;
+  /** When true, missing `repository` on registry → onNewPackage action (added deps only). */
+  requireRepository: boolean;
+  /**
+   * When > 0, weekly downloads below this (added deps only) → onNewPackage action.
+   * `0` disables download checks (avoids network + false positives).
+   */
+  minWeeklyDownloads: number;
 }
 
 export interface Policy {
@@ -18,6 +36,9 @@ export interface Policy {
   development: ScopePolicy;
   onOsv: EscalateLevel;
   onDeprecated: EscalateLevel;
+  /** Package or target version not on npm (slopsquat / hallucinated name). */
+  onRegistryMissing: EscalateLevel;
+  supplyChain: SupplyChainPolicy;
   /** Exact package names to ignore. */
   ignore: string[];
 }
@@ -35,6 +56,13 @@ export const DEFAULT_POLICY: Policy = {
   },
   onOsv: "high_risk",
   onDeprecated: "high_risk",
+  onRegistryMissing: "high_risk",
+  supplyChain: {
+    newPackageMaxAgeDays: 30,
+    onNewPackage: "review",
+    requireRepository: false,
+    minWeeklyDownloads: 0,
+  },
   ignore: [],
 };
 
@@ -57,10 +85,19 @@ export function bumpWithinAutoMerge(
 }
 
 export function mergePolicy(partial: Partial<Policy> | null | undefined): Policy {
-  if (!partial) return { ...DEFAULT_POLICY, production: { ...DEFAULT_POLICY.production }, development: { ...DEFAULT_POLICY.development }, ignore: [] };
+  if (!partial) {
+    return {
+      ...DEFAULT_POLICY,
+      production: { ...DEFAULT_POLICY.production },
+      development: { ...DEFAULT_POLICY.development },
+      supplyChain: { ...DEFAULT_POLICY.supplyChain },
+      ignore: [],
+    };
+  }
   return {
     version: 1,
-    requireDependencyContext: partial.requireDependencyContext ?? DEFAULT_POLICY.requireDependencyContext,
+    requireDependencyContext:
+      partial.requireDependencyContext ?? DEFAULT_POLICY.requireDependencyContext,
     production: {
       ...DEFAULT_POLICY.production,
       ...(partial.production ?? {}),
@@ -71,6 +108,11 @@ export function mergePolicy(partial: Partial<Policy> | null | undefined): Policy
     },
     onOsv: partial.onOsv ?? DEFAULT_POLICY.onOsv,
     onDeprecated: partial.onDeprecated ?? DEFAULT_POLICY.onDeprecated,
+    onRegistryMissing: partial.onRegistryMissing ?? DEFAULT_POLICY.onRegistryMissing,
+    supplyChain: {
+      ...DEFAULT_POLICY.supplyChain,
+      ...(partial.supplyChain ?? {}),
+    },
     ignore: partial.ignore ?? [],
   };
 }

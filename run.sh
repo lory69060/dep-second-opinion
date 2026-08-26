@@ -46,7 +46,7 @@ FROM=""
 TO=""
 
 case "$FIXTURE" in
-  npm-minor|npm-major|no-change)
+  npm-minor|npm-major|no-change|npm-hallucinated|npm-new-package)
     FROM="$ROOT/fixtures/$FIXTURE/before.package.json"
     TO="$ROOT/fixtures/$FIXTURE/after.package.json"
     ;;
