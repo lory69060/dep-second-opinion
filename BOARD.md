@@ -19,7 +19,7 @@
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
 | ✅ | 合并 PR [#7](https://github.com/lory69060/dep-second-opinion/pull/7) | `BOARD.md` 看板已进 main |
-| ✅ | 补 PR#12 影响率 | log #13：`opened=Y` · `influenced=N` |
+| ✅ | 增样本 | 合 trial PR#11；dependabot daily + 3 新依赖 |
 | — | **无阻塞开发项** | 主路径等 T1 |
 | P3 | Phase 5.4（可选） | Marketplace README 或打 `v0.2.1` |
 
@@ -71,7 +71,7 @@
 
 | 项 | 截止 | 进度 | 下一步 |
 | :--- | :--- | :--- | :--- |
-| **步骤 15 · 留存/影响率 T1** | 2026-09-04 | T0 ✅ · PR#12 影响率已填（0/1） | 9/4 填留存；其余 Dependabot PR 合入后再补 |
+| **步骤 15 · 留存/影响率 T1** | 2026-09-04 | 影响率 **50%**（2/2 已填） | 等新 Dependabot PR 合入；9/4 填留存 |
 
 ---
 
@@ -115,7 +115,7 @@
      │
 2026-08-26  Phase 5.3 CHANGELOG ✅
      │
-2026-08-27  BOARD 看板合入 · PR#12 影响率首条 ✅  ← 今天
+2026-08-27  BOARD 看板合入 · PR#12/#11 影响率 · 增样本配置 ✅  ← 今天
      │
 2026-09-04  T1 留存截止 ─────────────► 填 retention + 影响率汇总
      │
@@ -132,7 +132,7 @@
 | 误报率 | 0% | ≤20% | ✅ |
 | 漏报率 | 0% | ≤15% | ✅ |
 | 门禁准确 | 100% | ≥80% | ✅ |
-| 影响率 | **0%**（1/5 Dependabot 已合且已填） | ≥30% | 🔄 样本不足，9/4 汇总 |
+| 影响率 | **50%**（2/2 Dependabot 已合且已填） | ≥30% | ✅ |
 | 留存 | T0=Y | 9/4 仍启用 | 🔄 |
 | 停做线 | **未触发** | — | ✅ |
 
@@ -152,5 +152,5 @@
 | 仓 | Pin | 状态 |
 | :--- | :--- | :--- |
 | [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) | `@v0.2.0` Path A | Action 启用 |
-| 开着 PR | #11, #13, #14, #15 | REVIEW，未合 |
-| 已合 | #12 ms patch | SAFE；opened=Y influenced=N |
+| 开着 PR | #13, #14, #15 | REVIEW，未合 |
+| 已合 | #12 ms patch · #11 debug minor | #12 influenced=N · #11 influenced=Y |

@@ -18,6 +18,7 @@
 | :--- | :--- | :--- | :--- |
 | 2026-08-21 T0 | Y | v0.1.1 | |
 | 2026-08-22 | Y | v0.2.0 | Phase4 金丝雀 HIGH_RISK ok；main pin 升级 |
+| 2026-08-27 | Y | v0.2.0 | 合 PR#11；dependabot→daily；加 axios/dayjs/lodash |
 | 2026-09-04 T1 | | | 卸装 / 改 pin / 关掉 workflow → 留存失败 |
 
 ### 影响率（仅 **Dependabot/Renovate 真实 PR**；主动造样不计入）
@@ -34,4 +35,4 @@
 - [x] T0 基线写入本文件
 - [x] 试验仓启用 Dependabot（等真实 PR）
 - [ ] T1（2026-09-04）填留存
-- [x] ≥1 条真实 Dependabot PR 填 opened/influenced（PR#12，2026-08-27）
+- [x] ≥1 条真实 Dependabot PR 填 opened/influenced（PR#12、#11，2026-08-27）
