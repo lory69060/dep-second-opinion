@@ -34,4 +34,4 @@
 - [x] T0 基线写入本文件
 - [x] 试验仓启用 Dependabot（等真实 PR）
 - [ ] T1（2026-09-04）填留存
-- [ ] ≥1 条真实 Dependabot PR 填 opened/influenced
+- [x] ≥1 条真实 Dependabot PR 填 opened/influenced（PR#12，2026-08-27）
