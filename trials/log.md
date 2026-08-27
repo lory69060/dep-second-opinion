@@ -22,6 +22,10 @@ Pin：`lory69060/dep-second-opinion@v0.2.0`（Phase 4 起）
 | 14 | same | [#13](https://github.com/lory69060/dep-second-opinion-trial/pull/13) | dependabot / bump chalk major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；prod major | 2026-08-22 |
 | 15 | same | [#14](https://github.com/lory69060/dep-second-opinion-trial/pull/14) | dependabot / bump typescript major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
 | 16 | same | [#15](https://github.com/lory69060/dep-second-opinion-trial/pull/15) | dependabot / bump @types/node major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
+| 17 | same | [#18](https://github.com/lory69060/dep-second-opinion-trial/pull/18) | dependabot / bump lodash minor | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | 增样本；prod minor | 2026-08-27 |
+| 18 | same | [#19](https://github.com/lory69060/dep-second-opinion-trial/pull/19) | dependabot / bump dayjs minor | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | 增样本；prod minor | 2026-08-27 |
+| 19 | same | [#20](https://github.com/lory69060/dep-second-opinion-trial/pull/20) | dependabot / bump left-pad minor | HIGH_RISK | BLOCK | ok | ? | ? | 增样本；deprecated | 2026-08-27 |
+| 20 | same | [#21](https://github.com/lory69060/dep-second-opinion-trial/pull/21) | dependabot / bump axios major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | 增样本；prod major | 2026-08-27 |
 
 **主标签**：`ok` · `误报` · `漏报` · `半误` · `半漏` · `门禁对` · `漏帮助`  
 **opened / influenced**：`Y` / `N` / `?`（merge ≥3 天后补）
@@ -39,11 +43,11 @@ Pin：`lory69060/dep-second-opinion@v0.2.0`（Phase 4 起）
 | 影响率 | 未测 | ≥30% |
 | 停做线 | **未触** | |
 
-### Dependabot 真 PR（#12–#16 表行 / GH #11–#15）
+### Dependabot 真 PR（#12–#20 表行 / GH #11–#15、#18–#21）
 
 | 指标 | 值 |
 | :--- | :- |
-| 条数 | 5；主标签全 ok |
+| 条数 | 9；主标签全 ok |
 | 影响率（已合且已填） | **50%**（1/2；#11 influenced=Y · #12 influenced=N） |
-| 待填 | #13–#15 未合；新 Dependabot PR 待出现（daily + 新依赖） |
+| 待合 | #13–#15、#18–#21（7 条开着） |
 | 备注 | 曾因 Path B + Dependabot 读不到 secret 整批红；改 Path A 后复跑全绿 |

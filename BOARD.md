@@ -152,5 +152,5 @@
 | 仓 | Pin | 状态 |
 | :--- | :--- | :--- |
 | [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) | `@v0.2.0` Path A | Action 启用 |
-| 开着 PR | #13, #14, #15 | REVIEW，未合 |
+| 开着 PR | #13–#15、#18–#21（7 条） | REVIEW/HIGH_RISK，未合 |
 | 已合 | #12 ms patch · #11 debug minor | #12 influenced=N · #11 influenced=Y |
