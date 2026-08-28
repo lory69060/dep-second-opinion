@@ -22,8 +22,8 @@ Pin：`lory69060/dep-second-opinion@v0.2.0`（Phase 4 起）
 | 14 | same | [#13](https://github.com/lory69060/dep-second-opinion-trial/pull/13) | dependabot / bump chalk major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；prod major | 2026-08-22 |
 | 15 | same | [#14](https://github.com/lory69060/dep-second-opinion-trial/pull/14) | dependabot / bump typescript major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
 | 16 | same | [#15](https://github.com/lory69060/dep-second-opinion-trial/pull/15) | dependabot / bump @types/node major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | **真实 Dependabot**；dev major | 2026-08-22 |
-| 17 | same | [#18](https://github.com/lory69060/dep-second-opinion-trial/pull/18) | dependabot / bump lodash minor | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | 增样本；prod minor | 2026-08-27 |
-| 18 | same | [#19](https://github.com/lory69060/dep-second-opinion-trial/pull/19) | dependabot / bump dayjs minor | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | 增样本；prod minor | 2026-08-27 |
+| 17 | same | [#18](https://github.com/lory69060/dep-second-opinion-trial/pull/18) | dependabot / bump lodash minor | REVIEW_RECOMMENDED | REVIEW | ok | Y | Y | 增样本；prod minor；**已合** 2026-08-27；合前读 REVIEW；**操作者代填** | 2026-08-27 |
+| 18 | same | [#19](https://github.com/lory69060/dep-second-opinion-trial/pull/19) | dependabot / bump dayjs minor | REVIEW_RECOMMENDED | REVIEW | ok | Y | Y | 增样本；prod minor；**已合** 2026-08-27；合前读 REVIEW；**操作者代填** | 2026-08-27 |
 | 19 | same | [#20](https://github.com/lory69060/dep-second-opinion-trial/pull/20) | dependabot / bump left-pad minor | HIGH_RISK | BLOCK | ok | ? | ? | 增样本；deprecated | 2026-08-27 |
 | 20 | same | [#21](https://github.com/lory69060/dep-second-opinion-trial/pull/21) | dependabot / bump axios major | REVIEW_RECOMMENDED | REVIEW | ok | ? | ? | 增样本；prod major | 2026-08-27 |
 
@@ -48,6 +48,6 @@ Pin：`lory69060/dep-second-opinion@v0.2.0`（Phase 4 起）
 | 指标 | 值 |
 | :--- | :- |
 | 条数 | 9；主标签全 ok |
-| 影响率（已合且已填） | **50%**（1/2；#11 influenced=Y · #12 influenced=N） |
-| 待合 | #13–#15、#18–#21（7 条开着） |
+| 影响率（已合且已填） | **75%**（3/4；#11/#18/#19 influenced=Y · #12 influenced=N） |
+| 待合 | #13–#15、#20–#21（5 条开着） |
 | 备注 | 曾因 Path B + Dependabot 读不到 secret 整批红；改 Path A 后复跑全绿 |

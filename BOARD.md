@@ -1,7 +1,7 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-08-27  
-> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@59e2463`  
+> **最后更新：** 2026-08-27（晚）  
+> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@18c8bfc`  
 > **一句话状态：** 引擎 + Action 已可用；正在等试验留存窗口（T1 **2026-09-04**）
 
 | 链接 | 用途 |
@@ -19,7 +19,7 @@
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
 | ✅ | 合并 PR [#7](https://github.com/lory69060/dep-second-opinion/pull/7) | `BOARD.md` 看板已进 main |
-| ✅ | 增样本 | 合 trial PR#11；dependabot daily + 3 新依赖 |
+| ✅ | 合 trial PR#18/#19 | lodash/dayjs minor；影响率 75%（3/4） |
 | — | **无阻塞开发项** | 主路径等 T1 |
 | P3 | Phase 5.4（可选） | Marketplace README 或打 `v0.2.1` |
 
@@ -71,7 +71,7 @@
 
 | 项 | 截止 | 进度 | 下一步 |
 | :--- | :--- | :--- | :--- |
-| **步骤 15 · 留存/影响率 T1** | 2026-09-04 | 影响率 **50%**（2/2 已填） | 等新 Dependabot PR 合入；9/4 填留存 |
+| **步骤 15 · 留存/影响率 T1** | 2026-09-04 | 影响率 **75%**（4/4 已合已填） | 9/4 填留存；#13–#15/#20–#21 可选再合 |
 
 ---
 
@@ -132,7 +132,7 @@
 | 误报率 | 0% | ≤20% | ✅ |
 | 漏报率 | 0% | ≤15% | ✅ |
 | 门禁准确 | 100% | ≥80% | ✅ |
-| 影响率 | **50%**（2/2 Dependabot 已合且已填） | ≥30% | ✅ |
+| 影响率 | **75%**（4/4 Dependabot 已合且已填） | ≥30% | ✅ |
 | 留存 | T0=Y | 9/4 仍启用 | 🔄 |
 | 停做线 | **未触发** | — | ✅ |
 
@@ -152,5 +152,5 @@
 | 仓 | Pin | 状态 |
 | :--- | :--- | :--- |
 | [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) | `@v0.2.0` Path A | Action 启用 |
-| 开着 PR | #13–#15、#18–#21（7 条） | REVIEW/HIGH_RISK，未合 |
-| 已合 | #12 ms patch · #11 debug minor | #12 influenced=N · #11 influenced=Y |
+| 开着 PR | #13–#15、#20–#21（5 条） | REVIEW/HIGH_RISK，未合 |
+| 已合 | #12 · #11 · #18 · #19 | 4 条；影响率 75% |
