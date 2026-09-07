@@ -12,7 +12,7 @@ Organic, opt-in promotion for `dep-second-opinion`. No Marketplace yet. No drive
 
 ## Channels (allowed)
 
-1. **Own dogfood** — enable Path A on a small public npm/JS repo you control; note the pin in that README.
+1. **Own dogfood** — enable Path A on a small public npm/JS repo you control; note the pin in that README. Current: [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood).
 2. **Suggestion issues** — 1–2 polite Issues on active external repos with heavy Dependabot traffic. Opt-in only; never open a workflow PR unsolicited.
 3. **Repo surface** — README first viewport + GitHub topics (`github-actions`, `dependabot`, `npm`, …).
 
