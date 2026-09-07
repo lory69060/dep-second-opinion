@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
 > **最后更新：** 2026-09-07  
-> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@e276514`+  
-> **一句话状态：** 引擎 + Action 已可用；今日推进 **GitHub 增长轨**（README/topics · 公开 dogfood · 外仓 suggestion Issue）
+> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@7971198`+  
+> **一句话状态：** 引擎 + Action 已可用；**GitHub 增长轨**今日已落地（README/topics · 公开 dogfood · 外仓 suggestion Issue）
 
 | 链接 | 用途 |
 | :--- | :--- |
