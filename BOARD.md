@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-08-27（晚）  
-> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@18c8bfc`  
-> **一句话状态：** 引擎 + Action 已可用；正在等试验留存窗口（T1 **2026-09-04**）
+> **最后更新：** 2026-09-07  
+> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@e276514`+  
+> **一句话状态：** 引擎 + Action 已可用；今日推进 **GitHub 增长轨**（README/topics · 公开 dogfood · 外仓 suggestion Issue）
 
 | 链接 | 用途 |
 | :--- | :--- |
@@ -11,20 +11,20 @@
 | [`trials/retention.md`](./trials/retention.md) | 留存 / 影响率观察 |
 | [`CHANGELOG.md`](./CHANGELOG.md) | 消费者版本说明 |
 | [`docs/install.md`](./docs/install.md) | 安装 Path A / B |
+| [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP（短） |
 
 ---
 
-## 今日焦点（2026-08-27）
+## 今日焦点（2026-09-07）
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| ✅ | 合并 PR [#7](https://github.com/lory69060/dep-second-opinion/pull/7) | `BOARD.md` 看板已进 main |
-| ✅ | 合 trial PR#18/#19 | lodash/dayjs minor；影响率 75%（3/4） |
-| — | **无阻塞开发项** | 主路径等 T1 |
-| P3 | Phase 5.4（可选） | Marketplace README 或打 `v0.2.1` |
+| P0 | **GitHub 增长轨** | README 首屏 + topics；公开 dogfood；1–2 条外仓 suggestion Issue |
+| ✅ | 试验留存 T1 | 截止 **2026-09-04** 已过；填 `trials/retention.md` 仍可补 |
+| — | **不做** | Marketplace 上架、drive-by workflow PR、合并 draft #2–#6 |
+| P3 | Phase 5.4（可选） | Marketplace README 或打 `v0.2.1`（仍非今日） |
 
-**距离 T1 留存截止：** 8 天（2026-09-04）
-
+**增长轨文档：** [`docs/growth-github.md`](./docs/growth-github.md)
 ---
 
 ## 看板

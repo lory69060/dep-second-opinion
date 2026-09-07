@@ -1,9 +1,16 @@
 # dep-second-opinion
 
-Opt-in **second opinion** for npm dependency upgrade PRs.  
-**Comment-only** — never edits `package.json` / lockfiles.
+Dependabot / Renovate open a lot of npm upgrade PRs. Humans still have to decide: safe to merge, or dig into changelog and supply-chain risk?
 
-**Progress board:** [`BOARD.md`](./BOARD.md) · roadmap [`PLAN.md`](./PLAN.md)
+**Comment-only second opinion** — posts a structured review on the PR. Never edits `package.json` or lockfiles.
+
+```yaml
+- uses: lory69060/dep-second-opinion@v0.2.0
+```
+
+**Install:** [docs/install.md](./docs/install.md) (Path A for Dependabot) · **Changelog:** [CHANGELOG.md](./CHANGELOG.md) · **Board:** [BOARD.md](./BOARD.md)
+
+---
 
 ## Repository policy
 
