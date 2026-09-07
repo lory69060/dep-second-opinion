@@ -19,8 +19,9 @@
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| P0 | **GitHub 增长轨** | README 首屏 + topics；公开 dogfood；1–2 条外仓 suggestion Issue |
-| ✅ | 试验留存 T1 | 截止 **2026-09-04** 已过；填 `trials/retention.md` 仍可补 |
+| ✅ | **GitHub 增长轨** | README 首屏 + topics；公开 dogfood；外仓 suggestion Issue |
+| ✅ | 公开 dogfood | [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood) Path A `@v0.2.0` |
+| ✅ | Suggestion Issues | [npm/node-semver#900](https://github.com/npm/node-semver/issues/900) · [ajv-validator/ajv#2670](https://github.com/ajv-validator/ajv/issues/2670) |
 | — | **不做** | Marketplace 上架、drive-by workflow PR、合并 draft #2–#6 |
 | P3 | Phase 5.4（可选） | Marketplace README 或打 `v0.2.1`（仍非今日） |
 
@@ -147,10 +148,11 @@
 
 ---
 
-## 试验仓速查
+## 试验 / dogfood 速查
 
 | 仓 | Pin | 状态 |
 | :--- | :--- | :--- |
-| [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial) | `@v0.2.0` Path A | Action 启用 |
-| 开着 PR | #13–#15、#20–#21（5 条） | REVIEW/HIGH_RISK，未合 |
-| 已合 | #12 · #11 · #18 · #19 | 4 条；影响率 75% |
+| [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial)（private） | `@v0.2.0` Path A | Action 启用 |
+| [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood)（public） | `@v0.2.0` Path A | Dependabot weekly + Action |
+| 开着 PR（trial） | #13–#15、#20–#21（5 条） | REVIEW/HIGH_RISK，未合 |
+| 已合（trial） | #12 · #11 · #18 · #19 | 4 条；影响率 75% |
