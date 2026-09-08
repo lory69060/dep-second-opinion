@@ -1,6 +1,7 @@
 # GitHub growth SOP (short)
 
-Organic, opt-in promotion for `dep-second-opinion`. No Marketplace yet. No drive-by workflow PRs.
+Opt-in promotion for `dep-second-opinion`. **No drive-by workflow PRs.**  
+Sprint: Issue industrialization + Marketplace (W1–2) + Creem only after retention gates.
 
 ## Assets
 
@@ -9,12 +10,15 @@ Organic, opt-in promotion for `dep-second-opinion`. No Marketplace yet. No drive
 | Action pin | `uses: lory69060/dep-second-opinion@v0.2.0` |
 | Install | [docs/install.md](./install.md) Path A (Dependabot-compatible) |
 | Product | https://github.com/lory69060/dep-second-opinion |
+| Issue tracker | [trials/issue-tracker.md](../trials/issue-tracker.md) |
+| Marketplace checklist | [marketplace-readme-checklist.md](./marketplace-readme-checklist.md) |
 
 ## Channels (allowed)
 
-1. **Own dogfood** — enable Path A on a small public npm/JS repo you control; note the pin in that README. Current: [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood).
-2. **Suggestion issues** — 1–2 polite Issues on active external repos with heavy Dependabot traffic. Opt-in only; never open a workflow PR unsolicited.
-3. **Repo surface** — README first viewport + GitHub topics (`github-actions`, `dependabot`, `npm`, …).
+1. **Suggestion Issues** — Bot drafts ≤5/day; human reviews and posts ≥3/day when possible. Target **≥20 issued by end of W2** (G1).
+2. **Own dogfood** — [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood) Path A `@v0.2.0`.
+3. **Marketplace** — human submits in W1–2; see checklist. Parallel with Issues.
+4. **Repo surface** — README + topics (`github-actions`, `dependabot`, `npm`, …).
 
 ## Issue template (suggestion)
 
@@ -44,7 +48,8 @@ Happy to close this if it's not a fit — no hard sell.
 
 ## Do not
 
-- Marketplace listing (deferred)
-- Spam PRs that add workflows
+- Unsolicited workflow PRs
 - Fake metrics / fake customers / influence-rate claims in public copy
+- Creem/pricing before retention gates (≥5 external installs with comments, ≥2 retained 14d)
 - Merge historical draft review PRs (#2–#6)
+- Cold X install pitches as the primary channel (GrokBot = Issue drafter)

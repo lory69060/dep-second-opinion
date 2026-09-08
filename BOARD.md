@@ -1,31 +1,32 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-09-07  
-> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0) · main `@4a74732`  
-> **一句话状态：** 引擎 + Action 已可用；**GitHub 增长轨**今日已落地（README/topics · 公开 dogfood · 外仓 suggestion Issue）
+> **最后更新：** 2026-09-08  
+> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0)  
+> **一句话状态：** **加强版 W1 开工** — Issue 工业化 + Marketplace 清单；GrokBot 只起草 Suggestion Issue（不再主攻 X）
 
 | 链接 | 用途 |
 | :--- | :--- |
 | [`PLAN.md`](./PLAN.md) | 完整路线图与验收标准 |
 | [`trials/log.md`](./trials/log.md) | 逐条 PR 试验记录 |
 | [`trials/retention.md`](./trials/retention.md) | 留存 / 影响率观察 |
+| [`trials/issue-tracker.md`](./trials/issue-tracker.md) | Suggestion Issue 追踪（G1） |
 | [`CHANGELOG.md`](./CHANGELOG.md) | 消费者版本说明 |
 | [`docs/install.md`](./docs/install.md) | 安装 Path A / B |
-| [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP（短） |
+| [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP |
+| [`docs/marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md) | Marketplace 上架清单 |
 
 ---
 
-## 今日焦点（2026-09-07）
+## 今日焦点（2026-09-08）· 加强版 W1
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| ✅ | **GitHub 增长轨** | README 首屏 + topics；公开 dogfood；外仓 suggestion Issue |
-| ✅ | 公开 dogfood | [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood) Path A `@v0.2.0` |
-| ✅ | Suggestion Issues | [npm/node-semver#900](https://github.com/npm/node-semver/issues/900) · [ajv-validator/ajv#2670](https://github.com/ajv-validator/ajv/issues/2670) |
-| — | **不做** | Marketplace 上架、drive-by workflow PR、合并 draft #2–#6 |
-| P3 | Phase 5.4（可选） | Marketplace README 或打 `v0.2.1`（仍非今日） |
+| P0 | **Issue 工业化** | 追踪表已建；已发 2；G1=W2 末 ≥20 |
+| P0 | **GrokBot 换战场** | 今日起只起草 Issue 草稿；X 冷推降级 |
+| P1 | **Marketplace 清单** | [`marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md)；人提交 |
+| — | **不做** | drive-by workflow PR、Creem（留存门后）、合并 draft #2–#6、1688 抢配额 |
 
-**增长轨文档：** [`docs/growth-github.md`](./docs/growth-github.md)
+**证伪门：** G1 W2≥20 Issue · G2 W4≥3 外仓评论 · G3 W6≥2 留存14d · G4 Creem意向
 ---
 
 ## 看板
@@ -72,7 +73,8 @@
 
 | 项 | 截止 | 进度 | 下一步 |
 | :--- | :--- | :--- | :--- |
-| **步骤 15 · 留存/影响率 T1** | 2026-09-04 | 影响率 **75%**（4/4 已合已填） | 9/4 填留存；#13–#15/#20–#21 可选再合 |
+| **加强版 W1 · Issue + Marketplace** | W2 末 G1 | 已发 2 Issue；追踪表 + 上架清单已建 | 每日审发草稿；准备 Marketplace 截图/文案 |
+| **步骤 15 · 留存 T1** | 已过窗 | 影响率 75%（含代填）；T1 行可补 | 不阻塞增长轨 |
 
 ---
 
@@ -80,8 +82,8 @@
 
 | ID | 任务 | 预估 | 备注 |
 | :---: | :--- | :--- | :--- |
-| 5.4a | Marketplace README（badges + 价值主张） | 0.5d | Phase 5 下一步 |
-| 5.4b | 打 tag **`v0.2.1`**（含评论脚注） | 0.5d | CHANGELOG `[Unreleased]` 已有说明 |
+| 5.4a | Marketplace 提交（按 checklist） | W1–2 | **已解禁**；与 Issue 并行 |
+| 5.4b | 打 tag **`v0.2.1`**（含评论脚注） | 0.5d | 安装摩擦出现再打 |
 | — | 试验仓 Dependabot #11/#13–#15 处置 | — | 开着或关均可；verdict 已记 |
 | — | Draft 审查 PR [#2–#6](https://github.com/lory69060/dep-second-opinion/pulls) | — | 历史拆分，勿合入 main |
 
@@ -99,11 +101,11 @@
 
 ### 🚫 明确不做（当前阶段）
 
-- GitHub App / Marketplace **上架**
+- GitHub App（非 Marketplace Action 上架）
 - 自动改 `package.json` / lockfile
-- Stripe / 付费
-- PyPI 等第二生态
-- Cursor 插件形态（卖非 Cursor 团队）
+- Creem/付费（G3 留存门前）
+- drive-by workflow PR / 假指标
+- PyPI 等第二生态；把 1688 当与本仓并列主冲刺
 
 ---
 
