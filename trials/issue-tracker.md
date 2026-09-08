@@ -8,9 +8,9 @@
 | 2 | ajv-validator/ajv | https://github.com/ajv-validator/ajv/issues/2670 | 2026-09-07 | | | | OPEN |
 | 3 | holistics/dbml | https://github.com/holistics/dbml/issues/969 | 2026-09-08 | | | | 今日发出 |
 | 4 | duckduckgo/content-scope-scripts | https://github.com/duckduckgo/content-scope-scripts/issues/3022 | 2026-09-08 | | | | 今日发出 |
+| 5 | mento-protocol/frontend-monorepo | https://github.com/mento-protocol/frontend-monorepo/issues/927 | 2026-09-08 | | | | 今日发出 |
 
-**本周发出：** 4 · **距 G1（20）：** 16  
-**待补链接：** mento-protocol/frontend-monorepo（你说的 #4 草稿）— 发完把 URL 贴过来  
+**本周发出：** 5 · **距 G1（20）：** 15  
 
 **选仓：** 近 30 天 Dependabot/Renovate npm 活跃；维护中；禁推广/归档则 Skip。  
 **对外文案禁止：** 影响率数字、假客户、假社证。
