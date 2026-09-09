@@ -12,7 +12,7 @@
 | 6 | rudderlabs/rudder-sdk-js | https://github.com/rudderlabs/rudder-sdk-js/issues/3198 | 2026-09-09 | | | | |
 | 7 | ardatan/whatwg-node | https://github.com/ardatan/whatwg-node/discussions/3566 | 2026-09-09 | | | | **Discussion**（非 Issue） |
 | 8 | langx/langx | https://github.com/langx/langx/issues/1248 | 2026-09-09 | | | | |
-| 9 | github/gh-aw | https://github.com/github/gh-aw/issues/59721 | 2026-09-09 | | | | |
+| 9 | github/gh-aw | https://github.com/github/gh-aw/issues/59721 | 2026-09-09 | N | | | **CLOSED** by pelikhan（无评论）；AI Moderator 邮件可忽略 |
 | 10 | RedHatInsights/insights-advisor-frontend | https://github.com/RedHatInsights/insights-advisor-frontend/issues/2231 | 2026-09-09 | | | | |
 
 **累计发出：** 10 · **距 G1（20）：** 10  
