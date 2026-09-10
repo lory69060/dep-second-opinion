@@ -1,0 +1,16 @@
+---
+description: 写 dep-second-opinion 的 GrokBot 每日任务卡时，必须带上收紧后的选仓 TARGETING，禁止退回 X 冷推主路径。
+globs:
+alwaysApply: false
+---
+
+# dep-SO GrokBot 任务卡
+
+当用户要求「任务卡 / handoff / 给 GrokBot」且项目为 **dep-second-opinion** 时：
+
+1. 先读 [`docs/grokbot-standing.md`](docs/grokbot-standing.md) 与 [`trials/issue-tracker.md`](trials/issue-tracker.md)（已联系名单）。
+2. 输出英文 HANDOFF（≤40 行），**每一份 TODAY 必须内嵌 TARGETING Prefer/Avoid 全文或明确写 `TARGETING: per docs/grokbot-standing.md (mandatory)` 并复述 Prefer≥2 / Avoid 要点**。
+3. 主目标只能是 **draft suggestion Issues**；`replies=0`（除非用户当日改 CAPS）；禁止把 X 冷推当主任务。
+4. 更新已联系 skip 列表（含 CLOSED / Discussion）。
+5. 结束格式固定 4 行 REPORT（见 standing）。
+6. 模版外壳遵循用户规则 `grokbot-handoff.mdc`。

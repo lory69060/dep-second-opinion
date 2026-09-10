@@ -13,6 +13,7 @@
 | [`CHANGELOG.md`](./CHANGELOG.md) | 消费者版本说明 |
 | [`docs/install.md`](./docs/install.md) | 安装 Path A / B |
 | [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP |
+| [`docs/grokbot-standing.md`](./docs/grokbot-standing.md) | **GrokBot 任务卡 standing（含 TARGETING）** |
 | [`docs/marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md) | Marketplace 上架清单 |
 
 ---
