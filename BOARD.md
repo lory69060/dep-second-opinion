@@ -21,7 +21,7 @@
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| P0 | **Issue 工业化** | 追踪表已建；已发 2；G1=W2 末 ≥20 |
+| P0 | **Issue 工业化（定向）** | 已发 10/20；拒答多为「已有 workflow」→ 收紧选仓 |
 | P0 | **GrokBot 换战场** | 今日起只起草 Issue 草稿；X 冷推降级 |
 | P1 | **Marketplace 清单** | [`marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md)；人提交 |
 | — | **不做** | drive-by workflow PR、Creem（留存门后）、合并 draft #2–#6、1688 抢配额 |

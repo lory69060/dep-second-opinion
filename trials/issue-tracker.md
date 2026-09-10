@@ -17,7 +17,8 @@
 
 **累计发出：** 10 · **距 G1（20）：** 10  
 
-**选仓：** 近 30 天 Dependabot/Renovate npm 活跃；维护中；禁推广/归档则 Skip。  
+**选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  
+**常见拒：** `decline=workflow`（已有固定流程）→ 仍计 G1，不计安装。  
 **对外文案禁止：** 影响率数字、假客户、假社证。
 
 ## 草稿待审（GrokBot → 人）
