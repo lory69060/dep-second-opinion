@@ -14,7 +14,7 @@
 | 8 | langx/langx | https://github.com/langx/langx/issues/1248 | 2026-09-09 | | | | |
 | 9 | github/gh-aw | https://github.com/github/gh-aw/issues/59721 | 2026-09-09 | N | | | **CLOSED** by pelikhan（无评论）；AI Moderator 邮件可忽略 |
 | 10 | RedHatInsights/insights-advisor-frontend | https://github.com/RedHatInsights/insights-advisor-frontend/issues/2231 | 2026-09-09 | | | | |
-| 11 | michaelfaith/eslint-plugin-package-json | https://github.com/michaelfaith/eslint-plugin-package-json/issues/2172 | 2026-09-11 | | | | |
+| 11 | michaelfaith/eslint-plugin-package-json | https://github.com/michaelfaith/eslint-plugin-package-json/issues/2172 | 2026-09-11 | N | | | **decline**；请以后用他们 issue 模板 |
 | 12 | bennycode/trading-signals | https://github.com/bennycode/trading-signals/issues/1358 | 2026-09-11 | | | | |
 | 13 | wKovacs64/pwned | https://github.com/wKovacs64/pwned/issues/412 | 2026-09-11 | | | | |
 | 14 | Code-Hex/graphql-codegen-typescript-validation-schema | https://github.com/Code-Hex/graphql-codegen-typescript-validation-schema/issues/1572 | 2026-09-11 | | | | |
