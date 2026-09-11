@@ -18,8 +18,9 @@
 | 12 | bennycode/trading-signals | https://github.com/bennycode/trading-signals/issues/1358 | 2026-09-11 | | | | |
 | 13 | wKovacs64/pwned | https://github.com/wKovacs64/pwned/issues/412 | 2026-09-11 | | | | |
 | 14 | Code-Hex/graphql-codegen-typescript-validation-schema | https://github.com/Code-Hex/graphql-codegen-typescript-validation-schema/issues/1572 | 2026-09-11 | | | | |
+| 15 | fedify-dev/hollo | https://github.com/fedify-dev/hollo/issues/611 | 2026-09-11 | | | | |
 
-**累计发出：** 14 · **距 G1（20）：** 6  
+**累计发出：** 15 · **距 G1（20）：** 5  
 
 **选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  
 **常见拒：** `decline=workflow`（已有固定流程）→ 仍计 G1，不计安装。  
