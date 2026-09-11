@@ -15,8 +15,10 @@
 | 9 | github/gh-aw | https://github.com/github/gh-aw/issues/59721 | 2026-09-09 | N | | | **CLOSED** by pelikhan（无评论）；AI Moderator 邮件可忽略 |
 | 10 | RedHatInsights/insights-advisor-frontend | https://github.com/RedHatInsights/insights-advisor-frontend/issues/2231 | 2026-09-09 | | | | |
 | 11 | michaelfaith/eslint-plugin-package-json | https://github.com/michaelfaith/eslint-plugin-package-json/issues/2172 | 2026-09-11 | | | | |
+| 12 | bennycode/trading-signals | https://github.com/bennycode/trading-signals/issues/1358 | 2026-09-11 | | | | |
+| 13 | wKovacs64/pwned | https://github.com/wKovacs64/pwned/issues/412 | 2026-09-11 | | | | |
 
-**累计发出：** 11 · **距 G1（20）：** 9  
+**累计发出：** 13 · **距 G1（20）：** 7  
 
 **选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  
 **常见拒：** `decline=workflow`（已有固定流程）→ 仍计 G1，不计安装。  
