@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-09-08  
+> **最后更新：** 2026-09-14  
 > **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0)  
-> **一句话状态：** **加强版 W1 开工** — Issue 工业化 + Marketplace 清单；GrokBot 只起草 Suggestion Issue（不再主攻 X）
+> **一句话状态：** **G1 达标（Issue≥20）**；下一关注 G2（外仓安装跑出评论≥3）+ Marketplace
 
 | 链接 | 用途 |
 | :--- | :--- |
@@ -22,10 +22,9 @@
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| P0 | **Issue 工业化（定向）** | 已发 10/20；拒答多为「已有 workflow」→ 收紧选仓 |
-| P0 | **GrokBot 换战场** | 今日起只起草 Issue 草稿；X 冷推降级 |
-| P1 | **Marketplace 清单** | [`marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md)；人提交 |
-| — | **不做** | drive-by workflow PR、Creem（留存门后）、合并 draft #2–#6、1688 抢配额 |
+| ✅ | **G1 Issue≥20** | 累计 20 条 suggestion；今日 +5 |
+| P0 | **G2 外仓安装** | 盯回复/真挂 Path A；目标 ≥3 跑出评论 |
+| P1 | **Marketplace** | 按 checklist 推进提交 |
 
 **证伪门：** G1 W2≥20 Issue · G2 W4≥3 外仓评论 · G3 W6≥2 留存14d · G4 Creem意向
 ---
@@ -74,7 +73,7 @@
 
 | 项 | 截止 | 进度 | 下一步 |
 | :--- | :--- | :--- | :--- |
-| **加强版 W1 · Issue + Marketplace** | W2 末 G1 | 已发 2 Issue；追踪表 + 上架清单已建 | 每日审发草稿；准备 Marketplace 截图/文案 |
+| **加强版 · G1→G2** | W4 末 G2 | **G1 ✅ 20 Issue** | 跟进安装；Marketplace 并行 |
 | **步骤 15 · 留存 T1** | 已过窗 | 影响率 75%（含代填）；T1 行可补 | 不阻塞增长轨 |
 
 ---

@@ -19,8 +19,13 @@
 | 13 | wKovacs64/pwned | https://github.com/wKovacs64/pwned/issues/412 | 2026-09-11 | | | | |
 | 14 | Code-Hex/graphql-codegen-typescript-validation-schema | https://github.com/Code-Hex/graphql-codegen-typescript-validation-schema/issues/1572 | 2026-09-11 | | | | |
 | 15 | fedify-dev/hollo | https://github.com/fedify-dev/hollo/issues/611 | 2026-09-11 | | | | |
+| 16 | xxczaki/cashify | https://github.com/xxczaki/cashify/issues/109 | 2026-09-14 | | | | |
+| 17 | JSPrismarine/JSPrismarine | https://github.com/JSPrismarine/JSPrismarine/issues/2504 | 2026-09-14 | | | | |
+| 18 | kachkaev/njt | https://github.com/kachkaev/njt/issues/1312 | 2026-09-14 | | | | |
+| 19 | npmx-dev/npmx.dev | https://github.com/npmx-dev/npmx.dev/issues/3254 | 2026-09-14 | | | | |
+| 20 | appleple/SmartPhoto | https://github.com/appleple/SmartPhoto/issues/99 | 2026-09-14 | | | | |
 
-**累计发出：** 15 · **距 G1（20）：** 5  
+**累计发出：** 20 · **G1（≥20）：✅ 达标** · 下一关注 G2（外仓安装≥3）  
 
 **选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  
 **常见拒：** `decline=workflow`（已有固定流程）→ 仍计 G1，不计安装。  
