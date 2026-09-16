@@ -2,51 +2,65 @@
 
 Load this when writing daily HANDOFF cards. Do not re-plan strategy.
 
+## Phase (post-G1)
+
+**G1 done (20 Issues).** Gate now = **G2**: external installs with bot comments ≥3.  
+Bottleneck = who will actually install — **not** more spray Issues.
+
 ## Product (≤4 lines)
 
 - Comment-only GitHub Action for npm Dependabot/Renovate PRs
-- Pin: `uses: lory69060/dep-second-opinion@v0.2.0`
+- Pin: `uses: lory69060/dep-second-opinion@v0.2.0` (exact; no other versions)
 - Install: https://github.com/lory69060/dep-second-opinion/blob/main/docs/install.md
 - Tracker: `trials/issue-tracker.md` · SOP: `docs/growth-github.md`
 
-## Success
+## Success (daily)
 
-Drafts for **human** review: repo URL + why_1/2/3 + title + body + risk.  
-Owner posts Issues. Bot does **not** cold-pitch X as primary channel.
+1. **Primary:** Soft follow-up **drafts** for open, non-declined threads (human posts). Aim install intent.
+2. **Secondary:** Optional **≤2** new Issue drafts only if exceptional TARGETING fit.
+3. Scan threads for interest; “how to install” = only useful lead.
+4. X cold outreach **OFF** by default (`replies=0`).
 
-## TARGETING (must pass ≥2 — mandatory on every TODAY card)
+## TARGETING (new Issues only; ≥2 Prefer)
 
-**Prefer:**
+**Prefer:** npm/JS + Dependabot/Renovate ~30d; small/solo; stars ~200–5k; dep PR pileup OR major fatigue; no full in-house dep-review stack in README  
 
-- npm/JS + Dependabot/Renovate activity ~last 30 days
-- Small/solo maintainer feel; stars roughly **200–5k**
-- Open dep PRs piling up, or talk of hard majors / triage fatigue
-- No obvious in-house full dependency-review stack in README
+**Avoid:** `github/*` / big platform CI; archived/promo-ban; already contacted; volume spray; clear “already have workflow” shops  
 
-**Avoid:**
+**Pitch:** comment-only; does **not** replace their CI; policy YAML; close if covered. No influence-rate %, fake customers, pricing, “replaces Snyk”.
 
-- `github/*` and large platform orgs with heavy internal CI (default skip)
-- Archived / promo-banned / already in `trials/issue-tracker.md`
-- Spray targets chosen only to inflate G1 count
+## Follow-up rules
 
-**Pitch:** comment-only; does **not** replace their workflow; policy YAML; close if covered in-house.  
-No influence-rate %, fake customers, pricing, “replaces Snyk”.
+- **Do follow-up** only: still OPEN + no clear decline / close
+- **Never follow-up:** explicit decline (e.g. eslint-plugin-package-json), CLOSED (e.g. gh-aw)
+- Soft tone only — ask if Path A pin useful; offer install link; do not argue
+- Soft template:
 
-## Caps (defaults)
+```
+Quick ping — if a comment-only second opinion on npm Dependabot/Renovate PRs would still help, Path A pin is:
 
-`issues_drafted≤5 | originals=0 | replies=0 | emails=0`
+uses: lory69060/dep-second-opinion@v0.2.0
+
+Guide: https://github.com/lory69060/dep-second-opinion/blob/main/docs/install.md
+
+If you’re already covered, please ignore or close — thanks.
+```
+
+## Caps (defaults post-G1)
+
+`followups_drafted≤5 | issues_drafted≤2 | originals=0 | replies=0 | emails=0`
 
 ## Hard red lines
 
-- No unsolicited workflow PRs / posting Issues without owner approval
-- No Marketplace submit; no 1688intel in this standing
-- `decline=workflow` is expected — do not argue in drafts
+- No posting Issues/comments/PRs without owner approval
+- No Marketplace submit; no 1688intel; no inventing metrics/versions
+- Do not resume X cold replies as progress
 
 ## REPORT (exactly 4 lines)
 
 ```
-1) drafts: n | repos: …
-2) x_replies: 0
-3) file: <path or none>
+1) scans: … | none
+2) followups: n | issues: n | repos: …
+3) x_replies: 0
 4) tomorrow: …
 ```

@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-09-14  
+> **最后更新：** 2026-09-16  
 > **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0)  
-> **一句话状态：** **G1 达标（Issue≥20）**；下一关注 G2（外仓安装跑出评论≥3）+ Marketplace
+> **一句话状态：** **G1 ✅**；GrokBot 改为 **follow-up → G2 安装**；新 Issue ≤2；X 冷推关
 
 | 链接 | 用途 |
 | :--- | :--- |
