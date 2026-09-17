@@ -6,10 +6,10 @@
 | :- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | npm/node-semver | https://github.com/npm/node-semver/issues/900 | 2026-09-07 | | | | OPEN |
 | 2 | ajv-validator/ajv | https://github.com/ajv-validator/ajv/issues/2670 | 2026-09-07 | | | | OPEN |
-| 3 | holistics/dbml | https://github.com/holistics/dbml/issues/969 | 2026-09-08 | | | | |
+| 3 | holistics/dbml | https://github.com/holistics/dbml/issues/969 | 2026-09-08 | N | | | **decline**（2026-09-17 scan） |
 | 4 | duckduckgo/content-scope-scripts | https://github.com/duckduckgo/content-scope-scripts/issues/3022 | 2026-09-08 | | | | |
 | 5 | mento-protocol/frontend-monorepo | https://github.com/mento-protocol/frontend-monorepo/issues/927 | 2026-09-08 | | | | |
-| 6 | rudderlabs/rudder-sdk-js | https://github.com/rudderlabs/rudder-sdk-js/issues/3198 | 2026-09-09 | | | | |
+| 6 | rudderlabs/rudder-sdk-js | https://github.com/rudderlabs/rudder-sdk-js/issues/3198 | 2026-09-09 | N | | | **decline**（2026-09-17 scan） |
 | 7 | ardatan/whatwg-node | https://github.com/ardatan/whatwg-node/discussions/3566 | 2026-09-09 | | | | **Discussion**（非 Issue） |
 | 8 | langx/langx | https://github.com/langx/langx/issues/1248 | 2026-09-09 | | | | |
 | 9 | github/gh-aw | https://github.com/github/gh-aw/issues/59721 | 2026-09-09 | N | | | **CLOSED** by pelikhan（无评论）；AI Moderator 邮件可忽略 |
@@ -23,9 +23,10 @@
 | 17 | JSPrismarine/JSPrismarine | https://github.com/JSPrismarine/JSPrismarine/issues/2504 | 2026-09-14 | | | | |
 | 18 | kachkaev/njt | https://github.com/kachkaev/njt/issues/1312 | 2026-09-14 | | | | |
 | 19 | npmx-dev/npmx.dev | https://github.com/npmx-dev/npmx.dev/issues/3254 | 2026-09-14 | | | | |
-| 20 | appleple/SmartPhoto | https://github.com/appleple/SmartPhoto/issues/99 | 2026-09-14 | | | | |
+| 20 | appleple/SmartPhoto | https://github.com/appleple/SmartPhoto/issues/99 | 2026-09-14 | N | | | **CLOSED**（2026-09-17 scan；无维护者回复） |
 
 **累计发出：** 20 · **G1（≥20）：✅ 达标** · 下一关注 G2（外仓安装≥3）  
+**2026-09-17：** follow-up 草稿待发 → cashify#109 · pwned#412 · njt#1312 · trading-signals#1358 · hollo#611  
 
 **选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  
 **常见拒：** `decline=workflow`（已有固定流程）→ 仍计 G1，不计安装。  
