@@ -32,8 +32,9 @@ Bottleneck = who will actually install — **not** more spray Issues.
 ## Follow-up rules
 
 - **Do follow-up** only: still OPEN + no clear decline / close
-- **Never follow-up:** explicit decline (e.g. eslint-plugin-package-json), CLOSED (e.g. gh-aw)
+- **Never follow-up:** explicit decline, CLOSED, or **closed as spam** (e.g. trading-signals#1358) — permanent skip
 - Soft tone only — ask if Path A pin useful; offer install link; do not argue
+- Do **not** re-ping a thread that already got our Quick ping within **7 days**
 - Soft template:
 
 ```
