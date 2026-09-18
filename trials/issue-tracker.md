@@ -26,7 +26,8 @@
 | 20 | appleple/SmartPhoto | https://github.com/appleple/SmartPhoto/issues/99 | 2026-09-14 | N | | | **CLOSED**（2026-09-17 scan；无维护者回复） |
 
 **累计发出：** 20 · **G1（≥20）：✅ 达标** · 下一关注 G2（外仓安装≥3）  
-**2026-09-17：** follow-up 草稿待发 → cashify#109 · pwned#412 · njt#1312 · trading-signals#1358 · hollo#611  
+**2026-09-17：** follow-up **已发** → cashify#109 · pwned#412 · njt#1312 · trading-signals#1358 · hollo#611  
+**2026-09-18：** GrokBot 又跑了 X 冷回（无线索）→ **无效**；下一卡继续盯 G2 / 扫帖，禁止当进度  
 
 **选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  
 **常见拒：** `decline=workflow`（已有固定流程）→ 仍计 G1，不计安装。  
