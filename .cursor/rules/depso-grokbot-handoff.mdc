@@ -9,10 +9,13 @@ alwaysApply: false
 
 1. 先读 [`docs/grokbot-standing.md`](docs/grokbot-standing.md) 与 [`trials/issue-tracker.md`](trials/issue-tracker.md)。
 2. **G1 已达标（≥20）后**：TODAY 主目标改为 **G2** —
-   - Primary: 为仍 OPEN、未明确 decline 的帖起草 **soft follow-up**（人不发不算发出）
-   - Secondary: 新 Issue 草稿 **≤2**，且必须过 TARGETING
-   - `replies=0`（X 冷推默认关）；禁止把「回复数」当进度
-3. 每一份 TODAY 必须含 TARGETING Prefer/Avoid 要点（或 `per docs/grokbot-standing.md` + 复述 Prefer≥2 / Avoid）。
-4. Skip：tracker 全名单 + 已 decline/CLOSED 禁止 follow-up。
-5. REPORT 四行用 standing 里 post-G1 格式（scans / followups+issues / x_replies / tomorrow）。
+   - Primary arm 默认 **`scan`**
+   - Explore arm（可选）：**`followup_soft`** 或 **`issue_explain`**，各 ≤1 草稿除非 TODAY 改 CAPS
+   - `replies=0`；**禁止 `arm=x_cold`**；禁止把「回复数」当进度
+3. 每一份 TODAY 必须：
+   - 写明当日 **primary arm / explore arm**
+   - 含 TARGETING Prefer/Avoid 要点
+   - 草稿/follow-up **先写科普句**，再 pin + `docs/what-it-does.md`（禁止产品名开头）
+4. Skip：tracker 全名单 + 已 decline/CLOSED/spam 禁止 follow-up；7 天内已 ping 的勿连催。
+5. REPORT 四行必须含 **`arm: primary=… | explore=…`**（见 standing）。
 6. 外壳遵循用户规则 `grokbot-handoff.mdc`；整卡英文、短。
