@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-09-23  
+> **最后更新：** 2026-09-24  
 > **当前 release：** [`v0.2.1`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.1)  
-> **一句话状态：** **`v0.2.1` 已发**（findings + delta + 叙事）；G2 推广用 explain-first + pin `@v0.2.1`
+> **一句话状态：** G2=0 安装意图；人审发 npmx#3254 FU；Prefer 从未 soft：semver/ajv/ddg/mento
 
 | 链接 | 用途 |
 | :--- | :--- |
@@ -22,14 +22,14 @@
 
 ---
 
-## 今日焦点（2026-09-23）
+## 今日焦点（2026-09-24）
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| ✅ | **Findings + delta + 叙事** | Unreleased：`findings[]`、Dependency delta、supply-chain 话术 |
-| P0 | **G2 外仓安装** | 盯 follow-up / 真挂 Path A；目标 ≥3 跑出评论 |
-| P1 | **Marketplace** | [`marketplace-listing.md`](./docs/marketplace-listing.md) 草稿就绪；人提交 |
-| ✅ | **打 `v0.2.1`** | pin/docs/CHANGELOG；tag + release |
+| P0 | **人审发 FU** | npmx#3254（09-23 草稿）优先；Code-Hex#1572 次之 |
+| P0 | **G2 scan** | install_how=0；勿因 7d 满自动再催 cashify/pwned/njt |
+| P1 | **Prefer 从未 soft** | node-semver#900 · ajv#2670 · ddg#3022 · mento#927（explore≤1） |
+| P2 | **Marketplace** | listing 草稿就绪；人提交 |
 ---
 
 ## 看板
