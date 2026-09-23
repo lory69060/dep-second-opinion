@@ -9,10 +9,14 @@ Pin releases with `uses: lory69060/dep-second-opinion@vX.Y.Z` — see [install g
 
 ### Added
 
+- Machine-readable **`findings[]`** on `ReviewResult` (schema v1: `finding_id` / severity / package / signal / evidence_urls / summary). See [docs/findings-schema.md](./docs/findings-schema.md).
+- PR comment **Dependency delta** table (base → head package versions).
+- [docs/what-it-does.md](./docs/what-it-does.md) explain-first copy; [docs/eval.md](./docs/eval.md) release gate notes.
 - PR comment footer shows analyzer version (`@v0.2.0` from `package.json`) so reviewers know which release ran.
 
 ### Changed
 
+- README / growth narrative: **lightweight supply-chain second opinion** (comment-only; does not replace CI).
 - README and install docs consistently recommend `@v0.2.0`.
 - Install guide notes that **Dependabot PRs require Path A** (composite Action); repository secrets are not visible to Dependabot-triggered workflows.
 

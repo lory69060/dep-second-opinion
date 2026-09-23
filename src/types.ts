@@ -62,12 +62,26 @@ export interface ChangeAnalysis {
   evidence: string[];
 }
 
+/** Machine-readable finding for CI / agent consumers (stable schema v1). */
+export type FindingSeverity = "info" | "low" | "medium" | "high";
+
+export interface Finding {
+  finding_id: string;
+  severity: FindingSeverity;
+  package: string;
+  signal: string;
+  evidence_urls: string[];
+  summary: string;
+}
+
 export interface ReviewResult {
   verdict: Verdict;
   confidence: number;
   summary: string;
   reasons: string[];
   changes: ChangeAnalysis[];
+  /** Structured findings; Markdown is rendered from the same review. */
+  findings: Finding[];
   markdown: string;
   noCommentReason?: string;
 }

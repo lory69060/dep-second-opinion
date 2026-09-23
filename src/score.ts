@@ -1,4 +1,5 @@
 import type { ChangeAnalysis, ReviewResult, Verdict } from "./types.js";
+import { buildFindings } from "./findings.js";
 import {
   bumpWithinAutoMerge,
   DEFAULT_POLICY,
@@ -373,6 +374,7 @@ export function buildReviewResult(
     summary: agg.summary,
     reasons: agg.reasons,
     changes: enriched,
+    findings: buildFindings(enriched),
     markdown: "",
     noCommentReason: agg.noCommentReason,
   };

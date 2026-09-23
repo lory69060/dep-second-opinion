@@ -4,12 +4,13 @@ Human-only submission. Pin customers to **`@v0.2.x`**, never `@main`.
 
 ## README / listing copy
 
-- [ ] One-line value: comment-only second opinion on npm Dependabot/Renovate PRs
+- [ ] One-line value: **lightweight supply-chain second opinion** on npm Dependabot/Renovate PRs (comment-only)
+- [ ] Link [what-it-does.md](./what-it-does.md) (Dependabot opens PR; this Action only comments; does not replace CI)
 - [ ] What it does / does not (never edits lockfiles)
 - [ ] Path A pin snippet: `uses: lory69060/dep-second-opinion@v0.2.0`
 - [ ] Link to [install.md](./install.md) (Dependabot → Path A)
 - [ ] Permissions needed (contents read, pull-requests write / comments)
-- [ ] 1–3 screenshots: SAFE / REVIEW / HIGH_RISK PR comments (dogfood or trial)
+- [ ] 1–3 screenshots: SAFE / REVIEW / HIGH_RISK PR comments (dogfood or trial) — prefer shot with **Dependency delta** table
 - [ ] No influence-rate %, no fake customers, no “replaces Snyk”
 
 ## Submit

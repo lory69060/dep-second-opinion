@@ -42,7 +42,7 @@ Reward = install intent / real pin / bot comment — **not** X reply count.
 
 **Pitch (mandatory lead):** one sentence from `docs/what-it-does.md`, then pin, then links. Do not open with the product name or a feature list.
 
-> Dependabot (or Renovate) opens the dependency PR. This Action only comments SAFE / REVIEW / HIGH_RISK from your policy file. It does not edit lockfiles and does not replace CI.
+> Dependabot (or Renovate) opens the dependency PR. This Action is a lightweight **supply-chain second opinion**: it only comments SAFE / REVIEW / HIGH_RISK from your policy file. It does not edit lockfiles and does not replace CI.
 
 No influence-rate %, fake customers, pricing, “replaces Snyk”.
 

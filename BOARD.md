@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-09-16  
+> **最后更新：** 2026-09-23  
 > **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0)  
-> **一句话状态：** **G1 ✅**；GrokBot 改为 **follow-up → G2 安装**；新 Issue ≤2；X 冷推关
+> **一句话状态：** G1 ✅ · G2 跟进中；**产品增强轨**：findings schema + 评论依赖 delta + supply-chain 叙事已落地（Unreleased）
 
 | 链接 | 用途 |
 | :--- | :--- |
@@ -12,21 +12,23 @@
 | [`trials/issue-tracker.md`](./trials/issue-tracker.md) | Suggestion Issue 追踪（G1） |
 | [`CHANGELOG.md`](./CHANGELOG.md) | 消费者版本说明 |
 | [`docs/install.md`](./docs/install.md) | 安装 Path A / B |
+| [`docs/what-it-does.md`](./docs/what-it-does.md) | 一句话科普 |
+| [`docs/findings-schema.md`](./docs/findings-schema.md) | Findings schema v1 |
+| [`docs/eval.md`](./docs/eval.md) | 发版评测门禁 |
 | [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP |
 | [`docs/grokbot-standing.md`](./docs/grokbot-standing.md) | **GrokBot 任务卡 standing（含 TARGETING）** |
 | [`docs/marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md) | Marketplace 上架清单 |
 
 ---
 
-## 今日焦点（2026-09-08）· 加强版 W1
+## 今日焦点（2026-09-23）
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| ✅ | **G1 Issue≥20** | 累计 20 条 suggestion；今日 +5 |
-| P0 | **G2 外仓安装** | 盯回复/真挂 Path A；目标 ≥3 跑出评论 |
-| P1 | **Marketplace** | 按 checklist 推进提交 |
-
-**证伪门：** G1 W2≥20 Issue · G2 W4≥3 外仓评论 · G3 W6≥2 留存14d · G4 Creem意向
+| ✅ | **Findings + delta + 叙事** | Unreleased：`findings[]`、Dependency delta、supply-chain 话术 |
+| P0 | **G2 外仓安装** | 盯 follow-up / 真挂 Path A；目标 ≥3 跑出评论 |
+| P1 | **Marketplace** | checklist 已对齐叙事；人提交 |
+| P2 | **打 `v0.2.1`** | 把 Unreleased（脚注+findings+delta）打进 tag |
 ---
 
 ## 看板

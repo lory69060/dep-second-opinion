@@ -68,12 +68,13 @@
 | 20 Phase5.1 | ✅ 试验仓清理 + Dependabot 文档 | 关闭已记入手动样例 PR #1–#10；install 注明 Dependabot 须 Path A |
 | 21 Phase5.2 | ✅ Pin/docs 一致 | README/install `@v0.2.0`；评论脚注 `v0.2.0`；本仓 workflow 注明 dogfood vs 外仓 pin |
 | 22 Phase5.3 | ✅ 消费者 CHANGELOG | [`CHANGELOG.md`](./CHANGELOG.md)：`v0.1.1`→`v0.2.0` 行为/政策说明；`[Unreleased]` 含 5.2 脚注；README 链接 |
+| 23 Phase5.4a | ✅ Findings + delta + 叙事 | `findings[]` schema v1；评论 Dependency delta；supply-chain second opinion 文案；[`docs/eval.md`](./docs/eval.md)；见 CHANGELOG `[Unreleased]` |
 
 ## Phase 5 — 真实依赖机器人闭环（2026-08-22）
 
-- **不做**：GitHub App 品牌号、Marketplace 上架、第二生态（PyPI 等）
-- **做**：Dependabot 真 PR 入表；SAFE 合入开影响率计时；试验仓卫生；pin/docs 与 `v0.2.0` 一致；消费者变更日志
-- 步骤 19–22 已验收。下一步：步骤 15 T1（9/4）；或 Phase5.4 Marketplace README / 打 `v0.2.1` 含脚注
+- **做**：Dependabot 真 PR；G1 Issue 工业化；G2 外仓安装；Marketplace 清单；findings/delta（5.4a）
+- **暂缓**：Creem（留存门后）；GitHub App；第二生态
+- 下一步：G2；打 **`v0.2.1`** 纳入 Unreleased；Marketplace 人提交
 
 ## Phase 4 — AI / 供应链加深（2026-08-22）
 

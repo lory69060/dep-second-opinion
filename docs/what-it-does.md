@@ -1,12 +1,14 @@
 # What it does
 
-Dependabot (or Renovate) opens the dependency PR.  
-**dep-second-opinion only comments** on that PR: `SAFE` / `REVIEW` / `HIGH_RISK`, using a policy file in your repo.
+Dependabot / Renovate **open** the npm dependency PR.  
+**dep-second-opinion** is a **lightweight supply-chain second opinion** on that PR only.
 
-It does **not** edit `package.json` or lockfiles, and it does **not** block merge or replace your existing CI.
+It comments `SAFE` / `REVIEW` / `HIGH_RISK` from your repo policy file (`.dep-second-opinion.yml`), using version span, OSV, npm deprecation, registry-missing, and young-package signals.
+
+It does **not** edit `package.json` / lockfiles, and does **not** replace or block your existing CI.
 
 Pin:
 
 - `uses: lory69060/dep-second-opinion@v0.2.0`
 
-Install: [install.md](./install.md) (Path A for Dependabot).
+More: [install.md](./install.md) (Path A for Dependabot) · [findings schema](./findings-schema.md)

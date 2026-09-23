@@ -17,6 +17,24 @@ function verdictLabel(v: Verdict): string {
   }
 }
 
+function formatDeltaTable(result: ReviewResult): string[] {
+  if (result.changes.length === 0) return [];
+  const lines = [
+    "### Dependency delta (base → head)",
+    "",
+    "| Package | Section | From | To | Bump |",
+    "| :--- | :--- | :--- | :--- | :--- |",
+  ];
+  for (const item of result.changes) {
+    const { name, section, fromVersion, toVersion, bump } = item.change;
+    lines.push(
+      `| \`${name}\` | \`${section}\` | ${fromVersion ?? "∅"} | ${toVersion ?? "∅"} | \`${bump}\` |`,
+    );
+  }
+  lines.push("");
+  return lines;
+}
+
 export function formatMarkdown(
   result: ReviewResult,
   policySource: string | null = null,
@@ -48,6 +66,7 @@ export function formatMarkdown(
   }
 
   lines.push("");
+  lines.push(...formatDeltaTable(result));
   lines.push("### Changes");
   lines.push("");
 
@@ -82,6 +101,13 @@ export function formatMarkdown(
     for (const n of notes) {
       lines.push(`- Note: ${n}`);
     }
+    lines.push("");
+  }
+
+  if (result.findings.length > 0) {
+    lines.push("### Findings (machine-readable)");
+    lines.push("");
+    lines.push(`_${result.findings.length} finding(s) also in JSON \`findings[]\` (schema v1)._`);
     lines.push("");
   }
 

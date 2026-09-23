@@ -82,6 +82,7 @@ async function main(): Promise<void> {
         summary: gate.reason,
         reasons: [gate.reason],
         changes: [],
+        findings: [],
         markdown: "",
         noCommentReason: "skip_non_dependency_pr",
       };

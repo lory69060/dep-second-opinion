@@ -1,14 +1,14 @@
 # dep-second-opinion
 
-Dependabot / Renovate open a lot of npm upgrade PRs. Humans still have to decide: safe to merge, or dig into changelog and supply-chain risk?
+Dependabot / Renovate open a lot of npm upgrade PRs. Humans still decide: merge, or dig into changelog and supply-chain risk?
 
-**Comment-only second opinion** — posts a structured review on the PR. Never edits `package.json` or lockfiles.
+**Lightweight supply-chain second opinion** — comment-only on those PRs (`SAFE` / `REVIEW` / `HIGH_RISK` from your policy file). Never edits `package.json` or lockfiles; does not replace CI.
 
 ```yaml
 - uses: lory69060/dep-second-opinion@v0.2.0
 ```
 
-**Install:** [docs/install.md](./docs/install.md) (Path A for Dependabot) · **Changelog:** [CHANGELOG.md](./CHANGELOG.md) · **Board:** [BOARD.md](./BOARD.md)
+**What it does:** [docs/what-it-does.md](./docs/what-it-does.md) · **Install:** [docs/install.md](./docs/install.md) (Path A for Dependabot) · **Changelog:** [CHANGELOG.md](./CHANGELOG.md) · **Board:** [BOARD.md](./BOARD.md)
 
 ---
 
