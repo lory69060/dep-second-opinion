@@ -5,7 +5,7 @@ Dependabot / Renovate open a lot of npm upgrade PRs. Humans still decide: merge,
 **Lightweight supply-chain second opinion** — comment-only on those PRs (`SAFE` / `REVIEW` / `HIGH_RISK` from your policy file). Never edits `package.json` or lockfiles; does not replace CI.
 
 ```yaml
-- uses: lory69060/dep-second-opinion@v0.2.0
+- uses: lory69060/dep-second-opinion@v0.2.1
 ```
 
 **What it does:** [docs/what-it-does.md](./docs/what-it-does.md) · **Install:** [docs/install.md](./docs/install.md) (Path A for Dependabot) · **Changelog:** [CHANGELOG.md](./CHANGELOG.md) · **Board:** [BOARD.md](./BOARD.md)
@@ -52,7 +52,7 @@ PR emails are normal **GitHub** notifications — not Cursor-branded.
 Workflow: [`.github/workflows/dep-second-opinion.yml`](./.github/workflows/dep-second-opinion.yml)
 
 This repository **dogfoods** the analyzer from source (build + `scripts/github-pr-review.sh`).  
-Other repos should pin **`uses: lory69060/dep-second-opinion@v0.2.0`** — see [install guide](./docs/install.md).
+Other repos should pin **`uses: lory69060/dep-second-opinion@v0.2.1`** — see [install guide](./docs/install.md).
 
 On any PR that touches `package.json` / lockfiles, it analyzes base→head and upserts a PR comment.
 
@@ -62,10 +62,10 @@ See **[docs/install.md](./docs/install.md)** (Path A public composite · Path B 
 
 ```yaml
 # Path A (when Action repo is public)
-- uses: lory69060/dep-second-opinion@v0.2.0
+- uses: lory69060/dep-second-opinion@v0.2.1
 ```
 
-> Pin a release tag (e.g. `v0.2.0`). Avoid `@main`.  
+> Pin a release tag (e.g. `v0.2.1`). Avoid `@main`.  
 > Action repo is **public** — Path A is the default. Path B remains for private forks.
 
 ## Local CLI
@@ -85,7 +85,7 @@ Exit codes: `0` ok · `1` error · `2` `HIGH_RISK`
 
 ## Changelog
 
-See [`CHANGELOG.md`](./CHANGELOG.md) for release notes (`v0.1.1` → `v0.2.0` behavior changes).
+See [`CHANGELOG.md`](./CHANGELOG.md) for release notes (`v0.2.0` → `v0.2.1` findings/delta).
 
 ## Plan
 

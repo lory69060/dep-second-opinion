@@ -10,7 +10,7 @@ Bottleneck = who will actually install — **not** more spray Issues.
 ## Product (≤4 lines)
 
 - Comment-only GitHub Action for npm Dependabot/Renovate PRs
-- Pin: `uses: lory69060/dep-second-opinion@v0.2.0` (exact; no other versions)
+- Pin: `uses: lory69060/dep-second-opinion@v0.2.1` (exact; no other versions)
 - Install: https://github.com/lory69060/dep-second-opinion/blob/main/docs/install.md
 - Explainer (link this first): https://github.com/lory69060/dep-second-opinion/blob/main/docs/what-it-does.md
 - Tracker: `trials/issue-tracker.md` · SOP: `docs/growth-github.md`
@@ -57,7 +57,7 @@ No influence-rate %, fake customers, pricing, “replaces Snyk”.
 ```
 Dependabot (or Renovate) opens the dependency PR. This Action only comments SAFE / REVIEW / HIGH_RISK from a policy file in the repo. It does not edit lockfiles and does not replace your CI.
 
-- uses: lory69060/dep-second-opinion@v0.2.0
+- uses: lory69060/dep-second-opinion@v0.2.1
 - https://github.com/lory69060/dep-second-opinion/blob/main/docs/what-it-does.md
 
 If you already cover this, please ignore or close — thanks.

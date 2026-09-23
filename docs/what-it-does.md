@@ -9,6 +9,6 @@ It does **not** edit `package.json` / lockfiles, and does **not** replace or blo
 
 Pin:
 
-- `uses: lory69060/dep-second-opinion@v0.2.0`
+- `uses: lory69060/dep-second-opinion@v0.2.1`
 
 More: [install.md](./install.md) (Path A for Dependabot) · [findings schema](./findings-schema.md)

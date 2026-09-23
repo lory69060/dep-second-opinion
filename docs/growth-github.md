@@ -13,7 +13,7 @@ Many replies: **“we already have a fixed workflow / no third-party.”**
 
 | Asset | URL |
 | :--- | :--- |
-| Action pin | `uses: lory69060/dep-second-opinion@v0.2.0` |
+| Action pin | `uses: lory69060/dep-second-opinion@v0.2.1` |
 | Explainer | [docs/what-it-does.md](./what-it-does.md) — supply-chain second opinion, comment-only |
 | Install | [docs/install.md](./install.md) Path A (Dependabot-compatible) |
 | Product | https://github.com/lory69060/dep-second-opinion |
@@ -62,7 +62,7 @@ dep-second-opinion is a **comment-only** GitHub Action: structured SAFE / REVIEW
 
 Pin:
 
-- uses: lory69060/dep-second-opinion@v0.2.0
+- uses: lory69060/dep-second-opinion@v0.2.1
 
 Install: https://github.com/lory69060/dep-second-opinion/blob/main/docs/install.md
 

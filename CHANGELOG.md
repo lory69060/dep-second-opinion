@@ -7,18 +7,20 @@ Pin releases with `uses: lory69060/dep-second-opinion@vX.Y.Z` — see [install g
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-09-23
+
 ### Added
 
-- Machine-readable **`findings[]`** on `ReviewResult` (schema v1: `finding_id` / severity / package / signal / evidence_urls / summary). See [docs/findings-schema.md](./docs/findings-schema.md).
-- PR comment **Dependency delta** table (base → head package versions).
-- [docs/what-it-does.md](./docs/what-it-does.md) explain-first copy; [docs/eval.md](./docs/eval.md) release gate notes.
-- PR comment footer shows analyzer version (`@v0.2.0` from `package.json`) so reviewers know which release ran.
+- Machine-readable **`findings[]`** on `ReviewResult` (schema v1). See [docs/findings-schema.md](./docs/findings-schema.md).
+- PR comment **Dependency delta** table (base → head).
+- [docs/what-it-does.md](./docs/what-it-does.md) explain-first copy; [docs/eval.md](./docs/eval.md) release gate.
+- PR comment footer shows analyzer version from `package.json`.
 
 ### Changed
 
-- README / growth narrative: **lightweight supply-chain second opinion** (comment-only; does not replace CI).
-- README and install docs consistently recommend `@v0.2.0`.
-- Install guide notes that **Dependabot PRs require Path A** (composite Action); repository secrets are not visible to Dependabot-triggered workflows.
+- Narrative: **lightweight supply-chain second opinion** (comment-only; does not replace CI).
+- Docs recommend pin `@v0.2.1`.
+- Install guide: Dependabot requires Path A (no repo secrets).
 
 ## [0.2.0] - 2026-08-22
 
@@ -59,7 +61,8 @@ Initial pinned release for external trials.
 - OSV vulnerability lookup and npm deprecation metadata (online).
 - Local CLI: `dep-review analyze`, exit `2` on `HIGH_RISK`.
 
-[Unreleased]: https://github.com/lory69060/dep-second-opinion/compare/v0.2.0...main
+[Unreleased]: https://github.com/lory69060/dep-second-opinion/compare/v0.2.1...main
+[0.2.1]: https://github.com/lory69060/dep-second-opinion/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/lory69060/dep-second-opinion/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/lory69060/dep-second-opinion/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/lory69060/dep-second-opinion/releases/tag/v0.1.0

@@ -54,7 +54,7 @@ test("SAFE_TO_MERGE for offline patch bump without vulns includes Why section", 
   assert.match(result.markdown, /SAFE_TO_MERGE|可合并/);
   assert.match(result.markdown, /Why this verdict/);
   assert.match(result.markdown, /Dependency delta/);
-  assert.match(result.markdown, /dep-second-opinion.*v0\.2\.0/);
+  assert.match(result.markdown, /dep-second-opinion.*v0\.2\.1/);
   assert.ok(result.reasons.length > 0);
   assert.ok(result.findings.some((f) => f.signal === "bump_patch"));
 });

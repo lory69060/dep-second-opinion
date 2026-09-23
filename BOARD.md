@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
 > **最后更新：** 2026-09-23  
-> **当前 release：** [`v0.2.0`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.0)  
-> **一句话状态：** G1 ✅ · G2 跟进中；**产品增强轨**：findings schema + 评论依赖 delta + supply-chain 叙事已落地（Unreleased）
+> **当前 release：** [`v0.2.1`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.1)  
+> **一句话状态：** **`v0.2.1` 已发**（findings + delta + 叙事）；G2 推广用 explain-first + pin `@v0.2.1`
 
 | 链接 | 用途 |
 | :--- | :--- |
@@ -18,6 +18,7 @@
 | [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP |
 | [`docs/grokbot-standing.md`](./docs/grokbot-standing.md) | **GrokBot 任务卡 standing（含 TARGETING）** |
 | [`docs/marketplace-readme-checklist.md`](./docs/marketplace-readme-checklist.md) | Marketplace 上架清单 |
+| [`docs/marketplace-listing.md`](./docs/marketplace-listing.md) | Marketplace 提交文案草稿 |
 
 ---
 
@@ -27,8 +28,8 @@
 | :---: | :--- | :--- |
 | ✅ | **Findings + delta + 叙事** | Unreleased：`findings[]`、Dependency delta、supply-chain 话术 |
 | P0 | **G2 外仓安装** | 盯 follow-up / 真挂 Path A；目标 ≥3 跑出评论 |
-| P1 | **Marketplace** | checklist 已对齐叙事；人提交 |
-| P2 | **打 `v0.2.1`** | 把 Unreleased（脚注+findings+delta）打进 tag |
+| P1 | **Marketplace** | [`marketplace-listing.md`](./docs/marketplace-listing.md) 草稿就绪；人提交 |
+| ✅ | **打 `v0.2.1`** | pin/docs/CHANGELOG；tag + release |
 ---
 
 ## 看板
@@ -156,7 +157,7 @@
 
 | 仓 | Pin | 状态 |
 | :--- | :--- | :--- |
-| [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial)（private） | `@v0.2.0` Path A | Action 启用 |
-| [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood)（public） | `@v0.2.0` Path A | Dependabot weekly + Action |
+| [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial)（private） | `@v0.2.1` Path A | Action 启用 |
+| [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood)（public） | `@v0.2.1` Path A | Dependabot weekly + Action |
 | 开着 PR（trial） | #13–#15、#20–#21（5 条） | REVIEW/HIGH_RISK，未合 |
 | 已合（trial） | #12 · #11 · #18 · #19 | 4 条；影响率 75% |

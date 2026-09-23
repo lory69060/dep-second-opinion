@@ -1,7 +1,7 @@
 # Install dep-second-opinion
 
 Comment-only second opinion on npm dependency upgrade PRs.  
-Pin **`v0.2.0`** (or newer `v0.2.x`). Never uses `@main` in customer repos.
+Pin **`v0.2.1`** (or newer `v0.2.x`). Never uses `@main` in customer repos.
 
 ## Before you start
 
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: lory69060/dep-second-opinion@v0.2.0
+      - uses: lory69060/dep-second-opinion@v0.2.1
 ```
 
 ## Path B — private / air-gapped (optional)
@@ -77,7 +77,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: lory69060/dep-second-opinion
-          ref: v0.2.0
+          ref: v0.2.1
           token: ${{ secrets.DEP_REVIEW_READ }}
           path: .dep-review
 
@@ -126,7 +126,7 @@ Copy [`.dep-second-opinion.yml`](../.dep-second-opinion.yml) to the consuming re
 
 Dependabot-triggered workflows **do not** receive normal repository secrets (e.g. `DEP_REVIEW_READ`) unless you also add them under **Settings → Secrets → Dependabot**.
 
-- Prefer **Path A** (public `uses: lory69060/dep-second-opinion@v0.2.0`) — no extra secret.
+- Prefer **Path A** (public `uses: lory69060/dep-second-opinion@v0.2.1`) — no extra secret.
 - Path B on Dependabot PRs will fail with `Input required and not supplied: token` if the secret is missing from Dependabot secrets.
 
 ## What this is not
