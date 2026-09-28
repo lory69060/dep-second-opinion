@@ -7,6 +7,10 @@ Pin releases with `uses: lory69060/dep-second-opinion@vX.Y.Z` — see [install g
 
 ## [Unreleased]
 
+### Changed
+
+- Positioning: **auto-merge companion** + registry-missing; complements GitHub malware alerts / `dependency-review-action` / cooldown (not a malware/SCA replacement). See [docs/what-it-does.md](./docs/what-it-does.md) and [docs/dependabot-auto-merge.md](./docs/dependabot-auto-merge.md).
+
 ## [0.2.1] - 2026-09-23
 
 ### Added

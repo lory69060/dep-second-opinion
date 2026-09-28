@@ -1,8 +1,8 @@
 # Daily Plan 看板
 
-> **最后更新：** 2026-09-24  
+> **最后更新：** 2026-09-28  
 > **当前 release：** [`v0.2.1`](https://github.com/lory69060/dep-second-opinion/releases/tag/v0.2.1)  
-> **一句话状态：** G2=0 安装意图；人审发 npmx#3254 FU；Prefer 从未 soft：semver/ajv/ddg/mento
+> **一句话状态：** 楔子改为 **auto-merge companion + registry-missing**；Issue 喷量冻结；G2 杀线 **2026-10-12**
 
 | 链接 | 用途 |
 | :--- | :--- |
@@ -12,7 +12,8 @@
 | [`trials/issue-tracker.md`](./trials/issue-tracker.md) | Suggestion Issue 追踪（G1） |
 | [`CHANGELOG.md`](./CHANGELOG.md) | 消费者版本说明 |
 | [`docs/install.md`](./docs/install.md) | 安装 Path A / B |
-| [`docs/what-it-does.md`](./docs/what-it-does.md) | 一句话科普 |
+| [`docs/what-it-does.md`](./docs/what-it-does.md) | 一句话科普（auto-merge companion） |
+| [`docs/dependabot-auto-merge.md`](./docs/dependabot-auto-merge.md) | 与 Dependabot auto-merge 配对 + 截图清单 |
 | [`docs/findings-schema.md`](./docs/findings-schema.md) | Findings schema v1 |
 | [`docs/eval.md`](./docs/eval.md) | 发版评测门禁 |
 | [`docs/growth-github.md`](./docs/growth-github.md) | GitHub 增长 SOP |
@@ -22,14 +23,14 @@
 
 ---
 
-## 今日焦点（2026-09-24）
+## 今日焦点（2026-09-28）
 
 | 优先级 | 任务 | 说明 |
 | :---: | :--- | :--- |
-| P0 | **人审发 FU** | npmx#3254（09-23 草稿）优先；Code-Hex#1572 次之 |
-| P0 | **G2 scan** | install_how=0；勿因 7d 满自动再催 cashify/pwned/njt |
-| P1 | **Prefer 从未 soft** | node-semver#900 · ajv#2670 · ddg#3022 · mento#927（explore≤1） |
-| P2 | **Marketplace** | listing 草稿就绪；人提交 |
+| P0 | **Marketplace 人提交** | [`marketplace-listing.md`](./docs/marketplace-listing.md) 已按新楔子改 |
+| P0 | **G2 杀线** | 至 **2026-10-12**：≥1 非自有仓 Path A + 机器人评论，或 Marketplace 可追踪安装 |
+| P1 | **人审 FU ≤2** | 仅队列：npmx#3254 优先；Code-Hex#1572 次之；**不再扩名单** |
+| P2 | **截图素材** | trial [PR#19](https://github.com/lory69060/dep-second-opinion-trial/pull/19) SAFE · [PR#16](https://github.com/lory69060/dep-second-opinion-trial/pull/16) HIGH_RISK；pin 已升 `@v0.2.1` |
 ---
 
 ## 看板
@@ -76,8 +77,9 @@
 
 | 项 | 截止 | 进度 | 下一步 |
 | :--- | :--- | :--- | :--- |
-| **加强版 · G1→G2** | W4 末 G2 | **G1 ✅ 20 Issue** | 跟进安装；Marketplace 并行 |
-| **步骤 15 · 留存 T1** | 已过窗 | 影响率 75%（含代填）；T1 行可补 | 不阻塞增长轨 |
+| **Phase 6 · 楔子 + 获客换道** | **2026-10-12** | 喷量冻结；Marketplace + 人审队列 | 见下方杀线 |
+| **加强版 · G1→G2** | 杀线并入 Phase 6 | **G1 ✅** · **G2 = 0** | 禁止新 Issue 喷量 |
+| **步骤 15 · 留存 T1** | 已过窗 | 影响率 75%（含代填） | 不阻塞 |
 
 ---
 
@@ -85,8 +87,8 @@
 
 | ID | 任务 | 预估 | 备注 |
 | :---: | :--- | :--- | :--- |
-| 5.4a | Marketplace 提交（按 checklist） | W1–2 | **已解禁**；与 Issue 并行 |
-| 5.4b | 打 tag **`v0.2.1`**（含评论脚注） | 0.5d | 安装摩擦出现再打 |
+| 5.4a | Marketplace 提交（按 checklist） | 人 | **P0**；listing 已对齐 auto-merge 楔子 |
+| 5.4b | Tag **`v0.2.1`** | ✅ | 已发 2026-09-23 |
 | — | 试验仓 Dependabot #11/#13–#15 处置 | — | 开着或关均可；verdict 已记 |
 | — | Draft 审查 PR [#2–#6](https://github.com/lory69060/dep-second-opinion/pulls) | — | 历史拆分，勿合入 main |
 
@@ -98,7 +100,17 @@
 | :--- | :--- | :--- |
 | **2026-08-25** | PR#12 merge +3 天 | ✅ 2026-08-27 已填 log #13 |
 | **2026-09-04** | T1 留存窗口结束 | 填 `trials/retention.md` T1 行；算影响率/留存 |
-| 9/4 后 | 根据指标决策 | 未触停做线 → Phase 6 或对外推广；触线 → 改引擎 |
+| **2026-10-12** | Phase 6 杀线 | 见下节；未达标则停外推 |
+
+---
+
+## Phase 6 杀线（2026-09-28 → 2026-10-12）
+
+**达标（任一）：** ≥1 个**非自有**仓 Path A 安装且跑出机器人评论；**或** Marketplace 上架后出现可追踪安装线索。达标后再开下一产品小步。
+
+**未达标：** 停止一切外推；项目降级为自用 dogfood + 开源归档节奏；**不再投入 GrokBot 日卡**。
+
+GrokBot：默认 **scan-only**。Creem 仍冻结。
 
 ---
 
@@ -108,7 +120,8 @@
 - 自动改 `package.json` / lockfile
 - Creem/付费（G3 留存门前）
 - drive-by workflow PR / 假指标
-- PyPI 等第二生态；把 1688 当与本仓并列主冲刺
+- 行为分析 / install-script 沙箱 / 付费威胁情报 / 多生态 / LLM Why
+- Issue 喷量、X 冷推、「替代 Socket/Snyk」叙事
 
 ---
 
@@ -125,7 +138,11 @@
      │
 2026-09-04  T1 留存截止 ─────────────► 填 retention + 影响率汇总
      │
-     ?       Phase 5.4 / 6.x（待定）
+2026-09-23  v0.2.1 · findings/delta
+     │
+2026-09-28  Phase 6 楔子对齐 · 喷量冻结
+     │
+2026-10-12  G2/安装杀线 ─────────────► 达标续做 / 未达标停外推
 ```
 
 ---
@@ -140,7 +157,8 @@
 | 门禁准确 | 100% | ≥80% | ✅ |
 | 影响率 | **75%**（4/4 Dependabot 已合且已填） | ≥30% | ✅ |
 | 留存 | T0=Y | 9/4 仍启用 | 🔄 |
-| 停做线 | **未触发** | — | ✅ |
+| G2 外仓安装 | **0** | ≥1 by 2026-10-12 | 🔄 杀线 |
+| 停做线 | **未触发**（试验协议） | Phase 6 杀线 10-12 | 🔄 |
 
 ---
 
@@ -157,7 +175,7 @@
 
 | 仓 | Pin | 状态 |
 | :--- | :--- | :--- |
-| [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial)（private） | `@v0.2.1` Path A | Action 启用 |
-| [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood)（public） | `@v0.2.1` Path A | Dependabot weekly + Action |
+| [dep-second-opinion-trial](https://github.com/lory69060/dep-second-opinion-trial)（private） | `@v0.2.1` Path A | **2026-09-28 已升 pin** |
+| [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood)（public） | `@v0.2.1` Path A | **2026-09-28 已升 pin** |
 | 开着 PR（trial） | #13–#15、#20–#21（5 条） | REVIEW/HIGH_RISK，未合 |
 | 已合（trial） | #12 · #11 · #18 · #19 | 4 条；影响率 75% |

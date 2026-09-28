@@ -1,81 +1,62 @@
 # GitHub growth SOP (short)
 
 Opt-in promotion for `dep-second-opinion`. **No drive-by workflow PRs.**  
-Sprint: Issue industrialization + Marketplace (W1–2) + Creem only after retention gates.
+**2026-09-28:** Issue spray **frozen**. Creem only after retention gates.
 
-## Lesson (2026-09-10)
+## Lesson (2026-09-10 → 2026-09-28)
 
 Many replies: **“we already have a fixed workflow / no third-party.”**  
-→ Prefer **underserved maintainers**, not orgs with full platform tooling.  
-→ Pitch **non-blocking + policy YAML**, not “another bot in the stack.”
+Cold Issues → G2 **install_how=0** (scan 09-23).  
+GitHub now ships Dependabot **malware alerts** + cooldown; DRA is the CVE gate. Pitch **auto-merge policy + registry-missing**, not “another SCA / malware bot.”
 
 ## Assets
 
 | Asset | URL |
 | :--- | :--- |
 | Action pin | `uses: lory69060/dep-second-opinion@v0.2.1` |
-| Explainer | [docs/what-it-does.md](./what-it-does.md) — supply-chain second opinion, comment-only |
+| Explainer | [docs/what-it-does.md](./what-it-does.md) — auto-merge companion, comment-only |
+| Auto-merge pairing | [docs/dependabot-auto-merge.md](./dependabot-auto-merge.md) |
 | Install | [docs/install.md](./install.md) Path A (Dependabot-compatible) |
 | Product | https://github.com/lory69060/dep-second-opinion |
 | Issue tracker | [trials/issue-tracker.md](../trials/issue-tracker.md) |
 | Marketplace checklist | [marketplace-readme-checklist.md](./marketplace-readme-checklist.md) |
 
-## Target repos (GrokBot must pass)
+## Target repos (human FU only; GrokBot does not draft new Issues)
 
-**Prefer (need ≥2 signals):**
+**Prefer (need ≥2 signals):** npm/JS + Dependabot/Renovate; small/solo; stars ~200–5k; want auto-merge but no policy comment; no Socket/Snyk/DRA advertised as the whole stack.
 
-- npm/JS, Dependabot or Renovate active in last ~30 days
-- **Small team** feel: few core maintainers, or solo-maintained library
-- Stars roughly **200–5k** (not mega-corp platform monorepos)
-- Open Dependabot PRs sitting / discussion of “too many dep PRs” / fear of major bumps
-- No obvious in-house “dependency review” Action already advertised in README
-
-**Avoid / Skip:**
-
-- `github/*`, large BigTech orgs with heavy internal CI (Red Hat / DDG-scale OK only if clearly small sub-repo — default skip)
-- Archived, promo-banned CONTRIBUTING, almost no dep PRs
-- Already contacted (see tracker)
-- Repos whose README already lists Socket/Snyk/Dependabot grouping + custom review bots as the whole story
+**Avoid / Skip:** `github/*`; already contacted; decline/spam/CLOSED; “already have workflow”; spray.
 
 ## Pitch angle (body)
 
-Stress: **does not replace** their workflow; **comment-only**; **policy file**; useful only if they want a second opinion on npm bumps.  
-If they say they already have tooling → accept close; do not argue.
+Lead: Dependabot opens the PR; this Action comments whether the bump is in **your auto-merge band**, and flags **registry-missing** names/versions. Complements GH malware alerts / DRA / cooldown. Comment-only.  
+If they already have tooling → accept close; do not argue.
 
-## Channels
+## Channels (priority)
 
-1. **Suggestion Issues** — Bot drafts ≤5/day (targeted); human posts. G1 still ≥20 issued by W2, but **quality > spray**.
-2. **Dogfood** — [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood)
-3. **Marketplace** — human W1–2; passive discovery if Issues bounce on “have workflow”
-4. **Repo surface** — README + topics
+1. **Marketplace** — human submit ([listing](./marketplace-listing.md)); passive discovery
+2. **Content** — [dependabot-auto-merge.md](./dependabot-auto-merge.md) + dogfood screenshots
+3. **Human FU queue only** — at most 1–2 already-drafted threads (e.g. npmx#3254); **do not expand Prefer list**
+4. **Dogfood** — [dep-second-opinion-dogfood](https://github.com/lory69060/dep-second-opinion-dogfood) pin `@v0.2.1`
+5. GrokBot: **scan-only** (install intent). No `issue_explain` / no new FU drafts unless TODAY raises CAPS.
 
-## Issue template (suggestion)
+## Issue template (legacy — do not spray)
 
 ```
-## Why I'm writing
-
-Your repo has ongoing Dependabot/Renovate npm PRs. If triage is still mostly manual, a lightweight second opinion can help — without changing merge rules.
-
-## Optional tool
-
-dep-second-opinion is a **comment-only** GitHub Action: structured SAFE / REVIEW / HIGH_RISK notes on dependency upgrade PRs. It does **not** edit package.json/lockfiles and is **not** meant to replace your existing CI.
-
-Pin:
+Dependabot opens the npm PR. This Action comments SAFE / REVIEW / HIGH_RISK from a policy file so you can decide auto-merge. It also flags package names/versions that are not on the npm registry. It does not edit lockfiles and does not replace Dependabot malware alerts or dependency-review-action.
 
 - uses: lory69060/dep-second-opinion@v0.2.1
+- https://github.com/lory69060/dep-second-opinion/blob/main/docs/what-it-does.md
 
-Install: https://github.com/lory69060/dep-second-opinion/blob/main/docs/install.md
-
-If you already have this covered in-house, please close — no hard sell.
+If you already cover this, please close — thanks.
 ```
 
 ## Tracker notes
 
 - `reply=N` + `decline=workflow` when they say already have tooling
-- Counts toward G1 (issued); does **not** count toward G2 (install)
+- G1 issued count is historical; **progress = G2** (external pin + bot comment)
 
 ## Do not
 
 - Unsolicited workflow PRs; fake metrics / influence-rate %; invent pricing
-- Cold X as primary channel
-- Spray BigTech / github.org just to hit G1 count
+- Cold X; new Issue spray; “replaces Snyk/Socket”

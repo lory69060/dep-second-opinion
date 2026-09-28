@@ -5,8 +5,8 @@ Copy draft: [`marketplace-listing.md`](./marketplace-listing.md).
 
 ## README / listing copy
 
-- [ ] One-line value: **lightweight supply-chain second opinion** on npm Dependabot/Renovate PRs (comment-only)
-- [ ] Link [what-it-does.md](./what-it-does.md) (Dependabot opens PR; this Action only comments; does not replace CI)
+- [ ] One-line value: **comment-only auto-merge companion** + registry-missing on npm Dependabot/Renovate PRs
+- [ ] Link [what-it-does.md](./what-it-does.md) (complements GH malware alerts / DRA / cooldown; does not replace CI)
 - [ ] What it does / does not (never edits lockfiles)
 - [ ] Path A pin snippet: `uses: lory69060/dep-second-opinion@v0.2.1`
 - [ ] Link to [install.md](./install.md) (Dependabot → Path A)
@@ -17,7 +17,7 @@ Copy draft: [`marketplace-listing.md`](./marketplace-listing.md).
 ## Submit
 
 - [ ] Publish Action to GitHub Marketplace (owner: human)
-- [ ] After submit: note date on BOARD; keep Issue cadence in parallel
+- [ ] After submit: note date on BOARD; GrokBot remains scan-only（不喷新 Issue）
 
 ## After listing
 

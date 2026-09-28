@@ -1,5 +1,5 @@
 ---
-description: 写 dep-second-opinion 的 GrokBot 每日任务卡时，必须带 TARGETING；G1 后以 follow-up/G2 为主，禁止退回 X 冷推冲量。
+description: 写 dep-second-opinion 的 GrokBot 每日任务卡时，必须带 TARGETING；喷量冻结后默认 scan-only，禁止 X 冷推与新 Issue。
 alwaysApply: false
 ---
 
@@ -8,14 +8,14 @@ alwaysApply: false
 当用户要求「任务卡 / handoff / 给 GrokBot」且项目为 **dep-second-opinion** 时：
 
 1. 先读 [`docs/grokbot-standing.md`](docs/grokbot-standing.md) 与 [`trials/issue-tracker.md`](trials/issue-tracker.md)。
-2. **G1 已达标（≥20）后**：TODAY 主目标改为 **G2** —
+2. **G1 已达标；Issue 喷量已冻结（2026-09-28）**：TODAY 主目标 = **G2 安装意图 scan**
    - Primary arm 默认 **`scan`**
-   - Explore arm（可选）：**`followup_soft`** 或 **`issue_explain`**，各 ≤1 草稿除非 TODAY 改 CAPS
-   - `replies=0`；**禁止 `arm=x_cold`**；禁止把「回复数」当进度
+   - Explore 默认 **`none`**（`followup_soft` / `issue_explain` 关；除非 TODAY 明确抬 CAPS 且点名已有队列）
+   - `replies=0`；**禁止 `arm=x_cold`**；禁止把草稿数当进度
 3. 每一份 TODAY 必须：
-   - 写明当日 **primary arm / explore arm**
-   - 含 TARGETING Prefer/Avoid 要点
-   - 草稿/follow-up **先写科普句**，再 pin + `docs/what-it-does.md`（禁止产品名开头）
-4. Skip：tracker 全名单 + 已 decline/CLOSED/spam 禁止 follow-up；7 天内已 ping 的勿连催。
-5. REPORT 四行必须含 **`arm: primary=… | explore=…`**（见 standing）。
+   - 写明 **primary=scan | explore=none**（除非例外）
+   - 含 skip：decline / CLOSED / spam / 静音 7d 无维护者活动
+   - 若允许草稿：先写 auto-merge + registry-missing 科普句，再 pin `@v0.2.1` + `docs/what-it-does.md`
+4. 人审队列（npmx#3254 等）**不要重写草稿**。
+5. REPORT 四行必须含 **`arm: primary=scan | explore=none`**（见 standing）。
 6. 外壳遵循用户规则 `grokbot-handoff.mdc`；整卡英文、短。

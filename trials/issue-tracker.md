@@ -30,6 +30,7 @@
 **2026-09-18：** trading-signals **标 spam 关闭**；新 FU 草稿 → JSPrismarine#2504 · Code-Hex#1572 · langx#1248（人审后发）  
 **2026-09-23 scan：** install_how/PathA/pin=**0**（OPEN Prefer+RedHat+watches）；cashify/pwned/njt 评论=仅 09-17 我方 soft  
 **2026-09-23 explore：** FU 草稿 → npmx.dev#3254（`@v0.2.1`；Bot: `/workspace/desk/outputs/dep-followups-2026-09-23-pm.md`）  
+**2026-09-28：** 市场楔子改为 auto-merge companion；**Issue 喷量冻结**；GrokBot scan-only；人审队列仍可发 ≤2 FU。  
 **警告：** follow-up 易被当 spam → 放慢；7d 已满≠自动再 ping（无维护者活动则跳过）  
 
 **选仓（2026-09-10 起收紧）：** 中小维护、Dependabot 活跃、工具栈未满；**少碰**大厂/已有完整 dependency workflow 的仓。见 [`docs/growth-github.md`](../docs/growth-github.md)。  

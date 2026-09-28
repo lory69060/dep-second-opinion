@@ -1,6 +1,6 @@
 # Install dep-second-opinion
 
-Comment-only second opinion on npm dependency upgrade PRs.  
+Comment-only **auto-merge companion** on npm dependency upgrade PRs (policy verdict + registry-missing). Complements GitHub malware alerts / `dependency-review-action`; does not replace them.  
 Pin **`v0.2.1`** (or newer `v0.2.x`). Never uses `@main` in customer repos.
 
 ## Before you start

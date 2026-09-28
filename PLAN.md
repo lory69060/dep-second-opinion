@@ -70,11 +70,19 @@
 | 22 Phase5.3 | ✅ 消费者 CHANGELOG | [`CHANGELOG.md`](./CHANGELOG.md)：`v0.1.1`→`v0.2.0` 行为/政策说明；`[Unreleased]` 含 5.2 脚注；README 链接 |
 | 23 Phase5.4a | ✅ Findings + delta + 叙事 | `findings[]` schema v1；评论 Dependency delta；supply-chain 话术；[`docs/eval.md`](./docs/eval.md) |
 | 24 Phase5.4b | ✅ Tag **`v0.2.1`** + Marketplace 文案草稿 | pin/docs `@v0.2.1`；[`docs/marketplace-listing.md`](./docs/marketplace-listing.md) |
+| 25 Phase6 | 🔄 楔子对齐 + 获客换道 | auto-merge companion + registry-missing；Issue 喷量冻结；G2 杀线 **2026-10-12** |
+
+## Phase 6 — 定位与获客（2026-09-28）
+
+- **楔子**：Dependabot **auto-merge 政策伴侣** + `on_registry_missing`；互补 GH malware alerts / DRA / cooldown / Socket，不替代
+- **停**：新 Issue 喷量、X 冷推、malware headline、行为分析/多生态/LLM Why、Creem
+- **做**：人提交 Marketplace；人审队列 FU ≤2；dogfood `@v0.2.1`；GrokBot scan-only
+- **杀线 2026-10-12**：≥1 非自有仓 Path A + 评论，或 Marketplace 可追踪安装 → 续做；否则停外推、停 GrokBot 日卡
 
 ## Phase 5 — 真实依赖机器人闭环（2026-08-22）
 
 - **做**：Dependabot 真 PR；G1；G2；Marketplace 清单/文案；findings/delta；`v0.2.1`
-- **下一步**：G2 外仓安装；人提交 Marketplace；试验仓/dogfood 升 pin `@v0.2.1`
+- **下一步**：并入 Phase 6（喷量冻结；Marketplace 人提交）
 
 ## Phase 4 — AI / 供应链加深（2026-08-22）
 
